@@ -29,6 +29,7 @@
                 android:id="@+id/iv_store"
                 android:layout_width="159dp"
                 android:layout_height="159dp"
+                android:background="@drawable/camera_small"
                />
             <TextView
                 android:layout_width="wrap_content"

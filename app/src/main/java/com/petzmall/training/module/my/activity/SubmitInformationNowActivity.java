@@ -29,6 +29,7 @@ import com.lljjcoder.style.citypickerview.CityPickerView;
 import com.petzmall.training.MainActivity;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
+import com.petzmall.training.tools.KeyboardUtils;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -112,6 +113,7 @@ public class SubmitInformationNowActivity extends BaseActivity {
         switch (v.getId()) {
 
             case R.id.tv_editaddress_area:
+                KeyboardUtils.hideKeyboard(addressArea);
                 selectCity();
                 break;
 
