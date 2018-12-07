@@ -3,19 +3,11 @@ package com.petzmall.training.module.my.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.androidtools.inter.MyOnClickListener;
-import com.github.baseclass.rx.IOCallBack;
-import com.github.customview.MyLinearLayout;
+import com.github.customview.MyEditText;
+import com.github.customview.MyTextView;
 import com.lljjcoder.Interface.OnCityItemClickListener;
 import com.lljjcoder.bean.CityBean;
 import com.lljjcoder.bean.DistrictBean;
@@ -34,32 +26,17 @@ import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.citywheel.CityConfig;
 import com.lljjcoder.style.citylist.Toast.ToastUtils;
 import com.lljjcoder.style.citypickerview.CityPickerView;
-import com.petzmall.training.GetSign;
 import com.petzmall.training.MainActivity;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
-import com.petzmall.training.base.MyCallBack;
-import com.petzmall.training.network.ApiRequest;
-import com.petzmall.training.network.response.UploadImageObj;
-import com.petzmall.training.network.response.UploadImgItem;
-import com.petzmall.training.tools.BitmapUtils;
-import com.petzmall.training.tools.ImageUtils;
-import com.petzmall.training.tools.ImgUtil;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.functions.Consumer;
-import rx.Subscriber;
-import top.zibin.luban.Luban;
 
 public class SubmitInformationNowActivity extends BaseActivity {
 
@@ -69,17 +46,38 @@ public class SubmitInformationNowActivity extends BaseActivity {
     @BindView(R.id.tv_editaddress_area)
     TextView addressArea;
 
+    @BindView(R.id.et_shop_name)
+    MyEditText etShopName;
+    @BindView(R.id.et_name)
+    MyEditText etName;
+    @BindView(R.id.et_phone)
+    MyEditText etPhone;
+    @BindView(R.id.et_address_detail)
+    MyEditText etAddressDetail;
+    @BindView(R.id.et_license_number)
+    MyEditText etLicenseNumber;
+    @BindView(R.id.iv_store_license)
+    ImageView ivStoreLicense;
+    @BindView(R.id.iv_store_license1)
+    ImageView ivStoreLicense1;
+    @BindView(R.id.iv_store_license2)
+    ImageView ivStoreLicense2;
+    @BindView(R.id.iv_store_license3)
+    ImageView ivStoreLicense3;
+    @BindView(R.id.tv_submit)
+    MyTextView tvSubmit;
+
 
     private BottomSheetDialog selectPhotoDialog;
 
-    CityPickerView mCityPickerView = new CityPickerView();
+    CityPickerView mCityPickerView = new CityPickerView();//选择城市
     private int picOrCamera; //判断选择的是拍照还是选择图片
 
-    private  int flag;//判断选择的第一个还是第二个。
+    private int flag;//判断选择的第一个还是第二个。
     private String imgSaveName = "";
     Bitmap bitmap;
     File file;
-    private  String ImagePath1;
+
     @Override
     protected int getContentView() {
         return R.layout.act_submit_information_step2;
@@ -109,29 +107,44 @@ public class SubmitInformationNowActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.tv_editaddress_area,R.id.tv_submit})
+    @OnClick({R.id.tv_editaddress_area,R.id.iv_store_license,R.id.iv_store_license1,R.id.iv_store_license2,R.id.iv_store_license3,R.id.tv_submit})
     protected void onViewClick(View v) {
         switch (v.getId()) {
+
             case R.id.tv_editaddress_area:
-                wheel();
+                selectCity();
                 break;
-            case R.id.tv_submit:
-                STActivity(MainActivity.class);
+
+            case R.id.iv_store_license:
+                selectCity();
+                break;
+
+            case R.id.iv_store_license1:
+                selectCity();
+                break;
+
+            case R.id.iv_store_license2:
+                selectCity();
+                break;
+
+            case R.id.iv_store_license3:
+                selectCity();
+                break;
+                case R.id.tv_submit:
+                    STActivity(MainActivity.class);
                 break;
         }
     }
 
 
     /**
-     * 弹出选择器
+     * 弹出城市选择器
      */
-    private void wheel() {
-
-
-
-        CityConfig cityConfig = new CityConfig.Builder().title("选择城市")//标题
-                .build();
-
+    private void selectCity() {
+        CityConfig cityConfig = new CityConfig.Builder().title("选择城市")
+                .province("四川省")
+                .city("成都市")
+                .district("成华区").build();
         mCityPickerView.setConfig(cityConfig);
         mCityPickerView.setOnCityItemClickListener(new OnCityItemClickListener() {
             @Override
@@ -139,15 +152,13 @@ public class SubmitInformationNowActivity extends BaseActivity {
                 StringBuilder sb = new StringBuilder();
 //                sb.append("选择的结果：\n");
                 if (province != null) {
-                    sb.append(province.getName() + " " );
+                    sb.append(province.getName() + " ");
                 }
-
                 if (city != null) {
                     sb.append(city.getName() + " ");
                 }
-
                 if (district != null) {
-                    sb.append(district.getName() );
+                    sb.append(district.getName());
                 }
 //                if (province != null) {
 //                    sb.append(province.getName() + " " + province.getId() + "\n");
@@ -160,9 +171,7 @@ public class SubmitInformationNowActivity extends BaseActivity {
 //                if (district != null) {
 //                    sb.append(district.getName() + " " + district.getId() + ("\n"));
 //                }
-
                 addressArea.setText(sb.toString());
-
             }
 
             @Override
@@ -172,6 +181,7 @@ public class SubmitInformationNowActivity extends BaseActivity {
         });
         mCityPickerView.showCityPicker();
     }
+
     private void showSelectPhotoDialog() {
         if (selectPhotoDialog == null) {
             View sexView = LayoutInflater.from(mContext).inflate(R.layout.popu_select_photo, null);
@@ -214,7 +224,7 @@ public class SubmitInformationNowActivity extends BaseActivity {
 
 
     private void takePhoto() {
-        picOrCamera=2;
+        picOrCamera = 2;
         requestPermissions();
     }
 
@@ -260,6 +270,8 @@ public class SubmitInformationNowActivity extends BaseActivity {
 
 
     }
+
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {

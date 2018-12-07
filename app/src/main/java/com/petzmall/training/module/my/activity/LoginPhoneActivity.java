@@ -4,19 +4,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.github.customview.MyEditText;
 import com.github.rxjava.rxbus.RxUtils;
 import com.petzmall.training.GetSign;
-import com.petzmall.training.MainActivity;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
-import com.petzmall.training.base.MyCallBack;
-import com.petzmall.training.module.home.bean.HomeObj;
-import com.petzmall.training.network.ApiRequest;
-import com.petzmall.training.network.response.LoginObj;
-import com.petzmall.training.network.response.RegisterObj;
 
 import java.util.HashMap;
 import java.util.Map;

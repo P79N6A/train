@@ -198,7 +198,7 @@
                     android:paddingRight="10dp"
                     />
                 <com.github.customview.MyEditText
-                    android:id="@+id/et_address_number"
+                    android:id="@+id/et_address_detail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
@@ -216,8 +216,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="68dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginBottom="6dp"
                 android:background="@color/white"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
@@ -259,13 +257,16 @@
                     android:scaleType="fitXY"
                     android:layout_height="52dp" />
             </LinearLayout>
-
+            <View
+                android:layout_height="6dp"
+                android:layout_width="match_parent"
+                android:background="@color/submit_background"
+                />
             <LinearLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:layout_marginTop="2px"
                 android:paddingRight="10dp"
                 android:layout_height="68dp">
 
@@ -282,16 +283,20 @@
                     android:includeFontPadding="false"
                     />
                 <com.github.customview.MyImageView
+                    android:id="@+id/iv_store_license1"
                     android:layout_width="52dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/black"
+                    android:background="@drawable/camera_small"
                     android:layout_height="52dp" />
             </LinearLayout>
-
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/border_e52"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="68dp"
-                android:layout_marginTop="2px"
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
@@ -310,17 +315,22 @@
                     tools:ignore="MissingPrefix" />
 
                 <com.github.customview.MyImageView
+                    android:id="@+id/iv_store_license2"
                     android:layout_width="52dp"
                     android:layout_height="52dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/black" />
+                    android:background="@drawable/camera_small"  />
             </LinearLayout>
+            <View
+                android:layout_height="1dp"
+                android:layout_width="match_parent"
+                android:background="@color/border_e52"
+                />
             <LinearLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp"
-                android:layout_marginTop="2px"
                 android:paddingRight="10dp"
                 android:layout_height="68dp">
 
@@ -337,9 +347,10 @@
                     android:includeFontPadding="false"
                     />
                 <com.github.customview.MyImageView
+                    android:id="@+id/iv_store_license3"
                     android:layout_width="52dp"
                     android:layout_gravity="center_vertical"
-                    android:background="@color/black"
+                    android:background="@drawable/camera_small"
                     android:layout_height="52dp" />
             </LinearLayout>
             <View

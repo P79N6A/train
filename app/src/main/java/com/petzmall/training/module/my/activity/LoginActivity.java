@@ -6,7 +6,6 @@ import android.view.View;
 
 import com.github.androidtools.SPUtils;
 import com.google.gson.Gson;
-
 import com.petzmall.training.Config;
 import com.petzmall.training.GetSign;
 import com.petzmall.training.MainActivity;

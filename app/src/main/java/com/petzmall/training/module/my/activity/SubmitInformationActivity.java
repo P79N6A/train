@@ -9,17 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.github.androidtools.inter.MyOnClickListener;
 import com.github.baseclass.rx.IOCallBack;
-import com.github.customview.MyImageView;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 
 import org.devio.takephoto.app.TakePhoto;
-import org.devio.takephoto.app.TakePhotoActivity;
 import org.devio.takephoto.app.TakePhotoImpl;
 import org.devio.takephoto.compress.CompressConfig;
 import org.devio.takephoto.model.CropOptions;
@@ -33,19 +30,12 @@ import org.devio.takephoto.permission.PermissionManager;
 import org.devio.takephoto.permission.TakePhotoInvocationHandler;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.shaohui.advancedluban.Luban;
 import rx.Subscriber;
 
-public class SubmitInformationActivity extends BaseActivity  implements TakePhoto.TakeResultListener, InvokeListener {
+public class SubmitInformationActivity extends BaseActivity implements TakePhoto.TakeResultListener, InvokeListener {
 
 
     @BindView(R.id.iv_store)
@@ -54,6 +44,7 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
     private static final String TAG = SubmitInformationActivity.class.getName();
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
+    int size;
     @Override
     protected int getContentView() {
         return R.layout.act_submit_information_step1;
@@ -68,6 +59,7 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
                 .statusBarDarkFont(true, 0.2f)
                 .init();
     }
+
 
     /**
      * 获取TakePhoto实例
@@ -101,12 +93,14 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //以下代码为处理Android6.0、7.0动态权限所需
         PermissionManager.TPermissionType type = PermissionManager.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionManager.handlePermissionsResult(this, type, invokeParam, this);
     }
     @Override
     protected void initView() {
         setAppTitle("门店门头照片");
+        size = Math.min(getResources().getDisplayMetrics().widthPixels, getResources().getDisplayMetrics().heightPixels);
     }
 
     @Override
@@ -170,20 +164,6 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
                     e.printStackTrace();
                     subscriber.onError(e);
                 }
-                /*String newPath= ImageUtils.filePath;
-                String name=ImageUtils.fileName;
-                String smallBitmapPath = ImageUtils.getSmallBitmap(imgSaveName, newPath, name);
-                FileInputStream fis = null;
-                try {
-                    fis = new FileInputStream(smallBitmapPath);
-                    Bitmap bitmap  = BitmapFactory.decodeStream(fis);
-                    String imgStr = BitmapUtils.bitmapToString(bitmap);
-                    subscriber.onNext(imgStr);
-                    subscriber.onCompleted();
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    subscriber.onError(e);
-                }*/
             }
             @Override
             public void onMyNext(String baseImg) {
@@ -275,23 +255,20 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
 //                    }
 //                }
                 break;
-//            case R.id.btnPickByTake:
-//                if (rgCrop.getCheckedRadioButtonId() == R.id.rbCropYes) {
-//                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions());
-//                } else {
-//                    takePhoto.onPickFromCapture(imageUri);
-//                }
-//                break;
+            case "camera":
+                    takePhoto.onPickFromCaptureWithCrop(imageUri, getCropOptions());
+                break;
             default:
                 break;
         }
     }
 
     private void configCompress(TakePhoto takePhoto) {
+        //设置压缩规则，最大500kb
         LubanOptions option=new LubanOptions.Builder()
                 .setMaxHeight(800)
                 .setMaxWidth(800)
-                .setMaxSize(102400)
+                .setMaxSize(500*1024)
                 .create();
         CompressConfig config=CompressConfig.ofLuban(option);
         takePhoto.onEnableCompress(config,false);
@@ -306,13 +283,11 @@ public class SubmitInformationActivity extends BaseActivity  implements TakePhot
         builder.setCorrectImage(true);//是对拍的照片进行旋转角度纠正
         takePhoto.setTakePhotoOptions(builder.create());
     }
-
+     //设置剪裁
     private CropOptions getCropOptions() {
-        int height = 800;
-        int width = 800;
         CropOptions.Builder builder = new CropOptions.Builder();
-        builder.setAspectX(width).setAspectY(height);
-        builder.setWithOwnCrop(true);
+        builder.setAspectX(size).setAspectY(size);
+        builder.setWithOwnCrop(false);
         return builder.create();
     }
 

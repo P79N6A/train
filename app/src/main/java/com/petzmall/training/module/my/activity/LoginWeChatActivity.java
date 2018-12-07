@@ -5,16 +5,13 @@ import android.util.Log;
 import android.view.View;
 
 import com.github.androidtools.SPUtils;
-import com.google.gson.Gson;
 import com.petzmall.training.Config;
 import com.petzmall.training.GetSign;
 import com.petzmall.training.MainActivity;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 import com.petzmall.training.network.response.LoginObj;
-import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.UMShareConfig;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 
 import java.util.HashMap;
