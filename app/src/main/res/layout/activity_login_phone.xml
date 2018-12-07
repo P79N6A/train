@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <include layout="@layout/app_title"/>
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true"
+            android:focusable="true"
+            >
+            <com.github.customview.MyImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginBottom="60dp"
+                android:background="@drawable/login_logo"/>
+
+            <com.github.customview.MyLinearLayout
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                app:my_ll_border_color="@color/background_f2"
+                app:my_ll_border_width="1dp"
+                app:my_ll_bottom_line="true">
+
+                <com.github.customview.MyEditText
+                    android:id="@+id/et_register_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|left"
+                    android:hint="手机号"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    android:textSize="15sp" />
+            </com.github.customview.MyLinearLayout>
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="57dp"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+            <com.github.customview.MyLinearLayout
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                app:my_ll_bottom_line="true"
+                app:my_ll_border_color="@color/background_f2"
+                app:my_ll_border_width="1dp"
+
+                >
+
+
+                <com.github.customview.MyEditText
+                    android:gravity="center_vertical|left"
+                    android:id="@+id/et_register_code"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="验证码"
+                    android:textSize="15sp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    />
+
+            </com.github.customview.MyLinearLayout>
+                <com.github.customview.MyTextView
+                    android:id="@+id/tv_register_getcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/verification_code"
+                    android:textColor="@color/white"
+                    app:my_tv_solid="@color/code_background"
+                    app:my_tv_press="@color/code_background"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    app:my_tv_corner_radius="7dp"
+                    android:textSize="13sp"
+                    android:includeFontPadding="false"
+                    android:lineSpacingMultiplier="0.9"
+                    android:layout_marginTop="8dp"
+                    />
+            </LinearLayout>
+            <com.github.customview.MyImageView
+                android:id="@+id/tv_register_commit"
+                android:layout_width="249dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/register_button"
+                />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

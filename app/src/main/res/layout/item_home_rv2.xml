@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="9dp"
+    >
+    <include  layout="@layout/item_home_recyclerview_title"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_homepageradapter_artist"
+        android:layout_below="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

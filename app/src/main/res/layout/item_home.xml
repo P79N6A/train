@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <com.github.customview.MyImageView
+        android:id="@+id/iv_title"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:background="#DCDBDB"
+        android:scaleType="fitXY"
+        android:gravity="center_vertical"
+        app:my_iv_radius="5dp"
+        android:text="@string/app_name" />
+
+    <com.petzmall.training.view.MyGridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="3"></com.petzmall.training.view.MyGridView>
+
+
+</LinearLayout>

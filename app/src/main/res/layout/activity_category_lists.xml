@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.petzmall.training.view.ProgressLayout
+        android:id="@id/pl_load"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/background_f2"
+            android:orientation="vertical">
+
+            <include layout="@layout/app_title" />
+
+            <com.github.customview.MyLinearLayout
+                android:id="@+id/ll_goods_order"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:my_ll_border_width="1dp"
+                app:my_ll_bottom_line="true">
+
+                <TextView
+                    android:id="@+id/tv_goods_tuijian"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/comprehensive"
+                    android:textColor="@color/gray_33"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_goods_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/gray_33"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_goods_xl"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/screening"
+                    android:textColor="@color/gray_33"
+                    android:textSize="15sp" />
+                <!--<TextView-->
+                <!--android:id="@+id/tv_order_class_sx"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="1"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="筛选"-->
+                <!--android:visibility="gone"-->
+                <!--android:gravity="center"-->
+                <!--android:drawableRight="@drawable/order1"-->
+                <!--android:paddingRight="10dp"-->
+                <!--android:paddingLeft="10dp"-->
+                <!--android:textSize="15sp"-->
+                <!--android:textColor="@color/gray_33"-->
+                <!--/>-->
+            </com.github.customview.MyLinearLayout>
+
+            <in.srain.cube.views.ptr.PtrClassicFrameLayout
+                android:id="@id/pcfl_refresh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:ptr_ratio_of_header_height_to_refresh="1.2"
+                app:ptr_resistance="2.1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_order_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp">
+
+                </android.support.v7.widget.RecyclerView>
+            </in.srain.cube.views.ptr.PtrClassicFrameLayout>
+
+        </LinearLayout>
+    </com.petzmall.training.view.ProgressLayout>
+</LinearLayout>

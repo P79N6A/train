@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:id="@+id/ly_my_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_my_img"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/people" />
+
+        <RelativeLayout
+            android:id="@+id/ll_my_info"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="7dp">
+
+            <TextView
+                android:id="@+id/tv_my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="#1B130F"
+                android:textSize="15sp"
+                android:lineSpacingMultiplier="0.9"
+                android:includeFontPadding="false"
+                fontPath="fonts/SourceHanSansCN-Normal.ttf"
+                android:textStyle="bold"
+                android:text="萨福萨福"
+                tools:ignore="MissingPrefix" />
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/tv_my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                    android:lineSpacingMultiplier="0.9"
+                    android:includeFontPadding="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="噶大师的撒的"
+                    android:layout_gravity="center"
+                    android:textColor="#999999"
+                    android:textSize="10sp"
+                    tools:ignore="MissingPrefix" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        app:cardCornerRadius="5dp"
+        android:layout_gravity="center_vertical"
+        >
+        <com.github.customview.MyImageView
+            android:id="@+id/home_read_piv_iv1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+    </android.support.v7.widget.CardView>
+
+             <TextView
+                 android:layout_alignParentTop="true"
+                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                 android:id="@+id/home_tv_title1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:ellipsize="end"
+                 android:maxLines="3"
+                 android:lineSpacingMultiplier="0.9"
+                 android:includeFontPadding="false"
+                 android:paddingTop="9dp"
+                 android:textColor="@color/black"
+                 android:textSize="10sp"
+                 tools:ignore="MissingPrefix" />
+</LinearLayout>

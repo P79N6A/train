@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+        <com.github.customview.MyTextView
+            fontPath="fonts/SourceHanSansCN-Medium.ttf"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#1B130F"
+            android:text="精彩推荐"
+            android:gravity="center_vertical"
+            android:drawablePadding="5dp"
+            android:drawableStart="@drawable/blue_line"/>
+
+
+        <com.github.customview.MyTextView
+            android:id="@+id/change_content"
+            fontPath="fonts/SourceHanSansCN-Medium.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:textColor="#949494"
+            android:text="@string/change"
+            android:drawablePadding="5dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="true"
+            android:drawableStart="@drawable/refresh"/>
+</RelativeLayout>

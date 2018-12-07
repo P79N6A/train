@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="9dp">
+    <include  layout="@layout/item_home_recyclerview_title"/>
+
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:layout_height="wrap_content">
+             <android.support.v7.widget.CardView
+                 android:layout_width="165dp"
+                 android:layout_height="84dp"
+                 app:cardCornerRadius="5dp"
+                 >
+                 <com.github.customview.MyImageView
+                     android:id="@+id/home_read_piv_iv1"
+                     android:layout_width="match_parent"
+                     android:layout_height="84dp"
+                     android:scaleType="fitXY"/>
+             </android.support.v7.widget.CardView>
+             <TextView
+
+                 android:id="@+id/home_tv_title1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:ellipsize="end"
+                 android:singleLine="true"
+
+                 android:text="从你的世界路过"
+                 android:paddingTop="3dp"
+                 android:textColor="@color/black"
+                 android:textSize="13sp"
+                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                 android:lineSpacingMultiplier="0.9"
+                 android:includeFontPadding="false"
+                 tools:ignore="MissingPrefix" />
+             <TextView
+                 fontPath="fonts/SourceHanSansCN-Normal.ttf"
+                 android:id="@+id/home_tv_title2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:lineSpacingMultiplier="0.9"
+                 android:includeFontPadding="false"
+                 android:ellipsize="end"
+                 android:singleLine="true"
+                 android:textColor="#999999"
+                 android:text="从你的世界路过"
+                 android:textSize="9sp"
+                 tools:ignore="MissingPrefix" />
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <ImageView
+                     android:id="@+id/iv_video"
+                     android:layout_width="wrap_content"
+                     android:layout_height="8dp"
+                     android:layout_centerInParent="true"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/home_rv_video"/>
+                 <TextView
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:id="@+id/tv_video_num"
+                     android:layout_toRightOf="@id/iv_video"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="9sp"
+                     android:text="9548"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="1dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+
+                 <TextView
+                     android:id="@+id/tv_video_time"
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:layout_toRightOf="@id/tv_video_num"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="9sp"
+                     android:text="12:08"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="5dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+                 <TextView
+                     android:id="@+id/tv_video_author"
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:layout_alignParentRight="true"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="5dp"
+                     android:textSize="9sp"
+                     android:text="卡萨"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="5dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+
+             </RelativeLayout>
+         </LinearLayout>
+         <LinearLayout
+             android:layout_width="0dp"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:layout_height="wrap_content">
+             <android.support.v7.widget.CardView
+                 android:layout_width="165dp"
+                 android:layout_height="84dp"
+                 app:cardCornerRadius="5dp"
+                 >
+                 <com.github.customview.MyImageView
+                     android:id="@+id/home_read_piv_iv2"
+                     android:layout_width="match_parent"
+                     android:layout_height="84dp"
+                     android:scaleType="fitXY"/>
+             </android.support.v7.widget.CardView>
+             <TextView
+                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                 android:id="@+id/home_tv_right_title1"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:ellipsize="end"
+                 android:singleLine="true"
+                 android:lineSpacingMultiplier="0.9"
+                 android:includeFontPadding="false"
+                 android:text="从你的世界路过"
+                 android:paddingTop="3dp"
+                 android:textColor="@color/black"
+                 android:textSize="13sp"
+                 tools:ignore="MissingPrefix" />
+             <TextView
+                 fontPath="fonts/SourceHanSansCN-Normal.ttf"
+                 android:id="@+id/home_tv_right_title2"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:lineSpacingMultiplier="0.9"
+                 android:includeFontPadding="false"
+                 android:ellipsize="end"
+                 android:singleLine="true"
+                 android:textColor="#999999"
+                 android:text="从你的世界路过"
+                 android:textSize="9sp"
+                 tools:ignore="MissingPrefix" />
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content">
+                 <ImageView
+                     android:id="@+id/iv_right_video"
+                     android:layout_width="wrap_content"
+                     android:layout_height="8dp"
+                     android:layout_centerInParent="true"
+                     android:layout_alignParentLeft="true"
+                     android:background="@drawable/home_rv_video"/>
+                 <TextView
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:id="@+id/tv_right_video_num"
+                     android:layout_toRightOf="@id/iv_right_video"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="9sp"
+                     android:text="9548"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="1dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+
+                 <TextView
+                     android:id="@+id/tv_right_video_time"
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:layout_toRightOf="@id/tv_right_video_num"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:textSize="9sp"
+                     android:text="12:08"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="5dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+                 <TextView
+                     android:id="@+id/tv_right_video_author"
+                     fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                     android:layout_alignParentRight="true"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="5dp"
+                     android:textSize="9sp"
+                     android:text="卡萨"
+                     android:lineSpacingMultiplier="0.9"
+                     android:includeFontPadding="false"
+                     android:layout_marginLeft="5dp"
+                     android:textColor="#949494"
+                     tools:ignore="MissingPrefix" />
+
+             </RelativeLayout>
+         </LinearLayout>
+     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_homepageradapter_artist"
+        android:layout_below="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

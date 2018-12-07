@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        app:titleTextColor="@color/gray_66"
+        app:layout_collapseMode="pin"
+        >
+        <com.github.customview.MyRelativeLayout
+            android:layout_width="296dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="5dp"
+            app:my_rl_corner_radius="15dp"
+            app:my_rl_solid="#F5F5F5"
+            >
+
+            <TextView
+                fontPath="fonts/SourceHanSansCN-Normal.ttf"
+                android:id="@+id/et_search_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textColor="#999999"
+                android:text="请输入搜索内容"
+                android:textSize="13sp"
+                android:maxLines="1"
+                android:lineSpacingMultiplier="0.9"
+                android:includeFontPadding="false"
+                tools:ignore="MissingPrefix" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/search"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                />
+        </com.github.customview.MyRelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</LinearLayout>

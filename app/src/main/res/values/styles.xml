@@ -1,0 +1,333 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="android:textViewStyle">@style/AppTheme.Widget.TextView</item>-->
+        <!--&lt;!&ndash; Action Bar Theme &ndash;&gt;-->
+        <!--<item name="android:actionBarStyle">@style/AppTheme.ActionBar</item>-->
+        <!--&lt;!&ndash; Custom Style Attribute&ndash;&gt;-->
+        <!--<item name="textFieldStyle">@style/TextField</item>-->
+        <item name="android:typeface">monospace</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
+    </style>
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+    <!--pop弹出动画-->
+    <style name="popupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/popin</item>
+        <item name="android:windowExitAnimation">@anim/popout</item>
+    </style>
+
+
+    <style name="CollapsingToolbarTitleStyle.About" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/transparent</item>
+    </style>
+
+    <!--设置toolbar字体大小-->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!--&lt;!&ndash; AppTheme ActionBar Style &ndash;&gt;-->
+    <!--<style name="AppTheme.ActionBar" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">-->
+        <!--<item name="android:titleTextStyle">@style/AppTheme.ActionBar.TextAppearance</item>-->
+        <!--<item name="android:subtitleTextStyle">@style/AppTheme.ActionBar.TextAppearance.SubTitle</item>-->
+    <!--</style>-->
+
+
+    <!--<style name="AppTheme.ActionBar.TextAppearance" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+    <!--</style>-->
+
+    <!--<style name="AppTheme.ActionBar.TextAppearance.SubTitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse">-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+    <!--</style>-->
+
+    <!-- Custom Class Styles -->
+    <!--<style name="TextField" parent="android:Widget.Holo.Light.TextView">-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+        <!--<item name="android:textSize">@dimen/abc_text_size_small_material</item>-->
+    <!--</style>-->
+
+
+    <style name="NoTitleTranslucentTheme" parent="@style/AppTheme">
+        <item name="android:windowBackground">@color/transparent_bg</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.NoActionBar" >
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <!--<item name="android:textCursorDrawable">@drawable/cursor_color</item>&lt;!&ndash;光标颜色&ndash;&gt;-->
+        <item name="android:editTextStyle">@style/editTextStyle</item>
+        <item name="android:listDivider">@drawable/list_divider</item>
+    </style>
+    <style name="editTextStyle" parent="@style/Base.V7.Widget.AppCompat.EditText">
+        <item name="android:editTextColor">@color/colorText</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorHint">@color/top_color2</item>
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+    </style>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="radio_home">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:drawablePadding">3dp</item>
+    </style>
+
+    <!--&lt;!&ndash;自定义RatingBar Drawable&ndash;&gt;-->
+    <!--<style name="MyRatingBar" parent="@android:style/Widget.RatingBar">-->
+        <!--<item name="android:progressDrawable">@drawable/rating_stars</item>-->
+        <!--<item name="android:numColumns">5</item>-->
+        <!--<item name="android:minHeight">17dp</item>-->
+        <!--<item name="android:maxHeight">17dp</item>-->
+    <!--</style>-->
+
+
+    <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item><!-- 设置该属性边距为0dp-->
+    </style>
+
+    <!--<style name="add_new_style">-->
+        <!--<item name="android:windowEnterAnimation">@anim/add_new_in</item>-->
+        <!--<item name="android:windowExitAnimation">@anim/add_new_out</item>-->
+    <!--</style>-->
+    <style name="PhotoPickerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/photopicker_background</item>
+        <!--<item name="actionBarTheme">@style/actionBarTheme</item>-->
+        <!--<item name="actionBarPopupTheme">@style/actionBarPopupTheme</item>-->
+    </style>
+    <style name="cut_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:text">没什么可送的了就是来凑行数的</item>
+    </style>
+
+    <!--<style name="badge_style">-->
+        <!--<item name="android:layout_width">wrap_content</item>-->
+        <!--<item name="android:layout_height">wrap_content</item>-->
+        <!--<item name="android:minHeight">14dp</item>-->
+        <!--<item name="android:minWidth">14dp</item>-->
+        <!--<item name="android:paddingLeft">2dp</item>-->
+        <!--<item name="android:paddingRight">2dp</item>-->
+        <!--<item name="android:textColor">@color/white</item>-->
+        <!--<item name="android:visibility">invisible</item>-->
+        <!--<item name="android:gravity">center</item>-->
+        <!--<item name="android:background">@drawable/badge_bg</item>-->
+        <!--<item name="android:textStyle">bold</item>-->
+        <!--<item name="android:textSize">10sp</item>-->
+    <!--</style>-->
+
+    <style name="tv_price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--<style name="ratingBar" parent="@android:style/Widget.RatingBar">-->
+        <!--<item name="android:progressDrawable">@drawable/ratingbar_style</item>-->
+        <!--<item name="android:minHeight">13dp</item>-->
+        <!--<item name="android:isIndicator">true</item>-->
+        <!--<item name="android:rating">4.5</item>-->
+        <!--<item name="android:maxHeight">13dp</item>-->
+        <!--<item name="android:numStars">5</item>-->
+    <!--</style>-->
+
+    <style name="my_linear">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name ="android:layout_marginLeft">15dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="my_item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">15sp</item>
+        <item name ="android:layout_marginLeft">15dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/gray_33</item>
+    </style>
+  <!--  <style name="dialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/gui_ge_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/gui_ge_dialog_out</item>
+    </style>-->
+
+    <style name="alivc_info_seekbar" parent="@android:style/Widget.SeekBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:maxHeight">@dimen/alivc_info_seekbar_height</item>
+        <item name="android:minHeight">@dimen/alivc_info_seekbar_height</item>
+        <item name="android:paddingLeft">@dimen/alivc_info_seekbar_offset</item>
+        <item name="android:paddingRight">@dimen/alivc_info_seekbar_offset</item>
+        <item name="android:thumbOffset">@dimen/alivc_info_seekbar_offset</item>
+    </style>
+
+    <style name="alivc_info_seekbar_blue" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:thumb">@drawable/alivc_seekbar_thumb_blue</item>
+    </style>
+
+    <style name="alivc_info_seekbar_green" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_green</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_green</item>
+        <item name="android:thumb">@drawable/alivc_info_seekbar_thumb_green</item>
+    </style>
+
+    <style name="alivc_info_seekbar_orange" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_orange</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_orange</item>
+        <item name="android:thumb">@drawable/alivc_info_seekbar_thumb_orange</item>
+    </style>
+
+    <style name="alivc_info_seekbar_red" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_red</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_red</item>
+        <item name="android:thumb">@drawable/alivc_info_seekbar_thumb_red</item>
+    </style>
+
+    <style name="alivc_info_seekbar_blue_voice" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:thumb">@drawable/alivc_dialog_seek_thumb</item>
+    </style>
+
+    <style name="alivc_info_seekbar_blue_light" parent="alivc_info_seekbar">
+        <item name="android:progressDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:indeterminateDrawable">@drawable/alivc_info_seekbar_bg_blue</item>
+        <item name="android:thumb">@drawable/alivc_dialog_seek_thumb</item>
+    </style>
+
+    <style name="edit_line_style" parent="@android:style/Widget.EditText">
+        <item name="android:padding">5dp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/edit_round_bkg</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="edit_5line_style" parent="edit_line_style">
+        <item name="android:maxLines">5</item>
+    </style>
+
+    <style name="btn_style" parent="@android:style/Widget.Button.Small">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/btn_round_bkg</item>
+        <item name="android:layout_margin">5dp</item>
+    </style>
+
+    <style name="progress_style" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal</item>
+        <item name="android:maxHeight">2dp</item>
+        <item name="android:minHeight">2dp</item>
+        <item name="android:indeterminateOnly">false</item>
+    </style>
+
+    <style name="NoActionTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="addDownloadDialog" parent="android:Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <!-- 为了避免在有 NavigationBar 的手机上 Dialog 从 NavigationBar 底部上来。去掉 Dialog 的动画，使用 View 的动画。-->
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="AlivcDialog.Dialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="BottomCheckDialog" parent="android:Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@null
+        </item><!-- 为了避免在有 NavigationBar 的手机上 Dialog 从 NavigationBar 底部上来。去掉 Dialog 的动画，使用 View 的动画。-->
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="barrage_switch_text_color" parent="@android:style/TextAppearance.Small">\
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+    <style name="TipDialog" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--<style name="AppTheme.Widget.TextView" parent="android:Widget.Holo.Light.TextView">-->
+        <!--&lt;!&ndash; Custom Attr&ndash;&gt;-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+    <!--</style>-->
+
+    <!--<style name="TextAppearance.FontPath" parent="android:TextAppearance">-->
+        <!--&lt;!&ndash; Custom Attr&ndash;&gt;-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+        <!--<item name="android:textColor">#444</item>-->
+    <!--</style>-->
+
+    <!--<style name="TextAppearance.FontPathView" parent="android:TextAppearance">-->
+        <!--&lt;!&ndash; Custom Attr&ndash;&gt;-->
+        <!--<item name="fontPath">fonts/SourceHanSans-Normal.otf</item>-->
+        <!--<item name="android:textColor">#444</item>-->
+    <!--</style>-->
+
+
+
+</resources>
