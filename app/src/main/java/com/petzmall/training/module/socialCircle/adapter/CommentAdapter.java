@@ -13,6 +13,7 @@ import com.github.baseclass.adapter.BaseRecyclerAdapter;
 import com.github.baseclass.adapter.RecyclerViewHolder;
 import com.github.baseclass.rx.RxBus;
 import com.petzmall.training.R;
+import com.petzmall.training.listener.OnMultiClickListener;
 import com.petzmall.training.module.socialCircle.bean.CommentsBean;
 import com.petzmall.training.module.socialCircle.event.PopwindowEvent;
 import com.petzmall.training.view.CommentListView;
@@ -44,9 +45,9 @@ public class CommentAdapter extends BaseRecyclerAdapter<CommentsBean.DataBean> {
                 .setText(R.id.commentTv,"共"+bean.getReplyNum()+"条回复>")
                 .setText(R.id.comment_item_content,bean.getContent());
         TextView commentTv = holder.getTextView(R.id.commentTv);
-        commentTv.setOnClickListener(new View.OnClickListener() {
+        commentTv.setOnClickListener(new OnMultiClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onMultiClick(View v) {
                 ToastUtils.showToast(mContext,"" +bean.getId());
                 RxBus.getInstance().post(new PopwindowEvent(bean.getId()));
             }

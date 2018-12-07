@@ -206,6 +206,7 @@
         app:my_ll_bottom_line="true"
         app:my_ll_solid="@color/black"
         app:my_ll_all_line="true"
+        android:visibility="gone"
         android:orientation="horizontal"
         >
         <TextView

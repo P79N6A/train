@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -106,9 +107,7 @@ public class VideotestActivity extends BaseActivity {
     private MyPagerAdapter adapter;
     private CollapsingToolbarLayoutState state;
 
-    private CustomPopWindow mListPopWindow;
 
-    boolean forbidAppBarScroll;
     VideoIntroduceFragment videoIntroduceFragment;
     CommentsFragment commentsFragment;
 
@@ -123,7 +122,9 @@ public class VideotestActivity extends BaseActivity {
     boolean addHeader= false;//是否添加了头部
     XRecyclerView recyclerView;
 
-
+    int i0,i1;
+    View appBarChildAt;
+    AppBarLayout.LayoutParams appBarParams;
     private enum CollapsingToolbarLayoutState {
         EXPANDED,
         COLLAPSED,
@@ -150,6 +151,7 @@ public class VideotestActivity extends BaseActivity {
             @Override
             public void onMyNext(PopwindowEvent event) {
                 showPopListView();
+                Log.e("initRxBus", "initRxBus------>0");
             }
         });
     }
@@ -168,6 +170,14 @@ public class VideotestActivity extends BaseActivity {
         fragments.add(new VideoIntroduceFragment());
         fragments.add(new CommentsFragment());
         initMagicIndicator();
+
+        //控制AppBarLayout折叠
+         i0 = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL;
+         i1 = AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED;
+         appBarChildAt = mAppBar.getChildAt(0);
+         appBarParams = (AppBarLayout.LayoutParams) appBarChildAt.getLayoutParams();
+
+
     }
 
     private void initAppBar() {
@@ -205,8 +215,6 @@ public class VideotestActivity extends BaseActivity {
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);
         commonNavigator.setAdapter(new CommonNavigatorAdapter() {
-
-
             @Override
             public int getCount() {
                 return mDataList.size();
@@ -282,15 +290,12 @@ public class VideotestActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+
     }
 
 
     @OnClick({R.id.iv_back, R.id.tv_player})
     protected void onViewClick(View v) {
-        int i0 = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL;
-        int i1 = AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED;
-        View appBarChildAt = mAppBar.getChildAt(0);
-        AppBarLayout.LayoutParams appBarParams = (AppBarLayout.LayoutParams) appBarChildAt.getLayoutParams();
         switch (v.getId()) {
             case R.id.iv_back:
                 appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
@@ -305,7 +310,6 @@ public class VideotestActivity extends BaseActivity {
 
 
     private void showPopListView() {
-
          View contentView = LayoutInflater.from(this).inflate(R.layout.pop_list, null);
          handleListView(contentView);
          popupWindow = new CommonPopupWindow.Builder(this)
@@ -331,6 +335,8 @@ public class VideotestActivity extends BaseActivity {
                 //开始构建
                 .create();
             //弹出PopupWindow
+        appBarParams.setScrollFlags(0);//这个加了之后不可滑动
+        appBarChildAt.setLayoutParams(appBarParams);
         popupWindow.showAsDropDown(mIvVideoPreview);
     }
 
@@ -341,6 +347,8 @@ public class VideotestActivity extends BaseActivity {
         cancelPop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
+                appBarChildAt.setLayoutParams(appBarParams);
                 popupWindow.dismiss();
                 addHeader = false;
             }
@@ -420,6 +428,8 @@ public class VideotestActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if(popupWindow!= null && popupWindow.isShowing()){
+            appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
+            appBarChildAt.setLayoutParams(appBarParams);
             popupWindow.dismiss();
             addHeader = false;
         }else{
