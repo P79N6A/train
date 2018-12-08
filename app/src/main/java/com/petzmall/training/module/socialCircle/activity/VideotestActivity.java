@@ -182,16 +182,15 @@ public class VideotestActivity extends BaseActivity {
 
     private void initAppBar() {
         mAppBar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
+            int scrollRangle = appBarLayout.getTotalScrollRange();
+            //初始verticalOffset为0，不能参与计算。
             if (verticalOffset == 0) {
-                if (state != CollapsingToolbarLayoutState.EXPANDED) {
-                    state = CollapsingToolbarLayoutState.EXPANDED;//修改状态标记为展开
-                    mTvPlayer.setVisibility(View.GONE);
-                    mToolbar.setVisibility(View.GONE);
-                    mImmersionBar.statusBarColor(R.color.white)
+                mToolbar.setAlpha(0.0f);
+                mImmersionBar.statusBarColor(R.color.white)
                             .statusBarDarkFont(true, 0.2f)
                             .init();
-                }
-            } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
+
+            }  else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
                 if (state != CollapsingToolbarLayoutState.COLLAPSED) {
                     mTvPlayer.setVisibility(View.VISIBLE);
                     mToolbar.setVisibility(View.VISIBLE);
@@ -199,13 +198,39 @@ public class VideotestActivity extends BaseActivity {
                             .statusBarDarkFont(true, 0.2f)
                             .init();
                 }
-            } else {
-                mTvPlayer.setVisibility(View.GONE);
-                mToolbar.setVisibility(View.GONE);
+            }else {
+                //保留一位小数
+                float alpha = Math.abs(Math.round(1.0f * verticalOffset / scrollRangle) * 10) / 10;
+                mToolbar.setAlpha(alpha);
                 mImmersionBar.statusBarColor(R.color.white)
                         .statusBarDarkFont(true, 0.2f)
                         .init();
             }
+
+//            if (verticalOffset == 0) {
+//                if (state != CollapsingToolbarLayoutState.EXPANDED) {
+//                    state = CollapsingToolbarLayoutState.EXPANDED;//修改状态标记为展开
+//                    mTvPlayer.setVisibility(View.GONE);
+//                    mToolbar.setVisibility(View.GONE);
+//                    mImmersionBar.statusBarColor(R.color.white)
+//                            .statusBarDarkFont(true, 0.2f)
+//                            .init();
+//                }
+//            } else if (Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()) {
+//                if (state != CollapsingToolbarLayoutState.COLLAPSED) {
+//                    mTvPlayer.setVisibility(View.VISIBLE);
+//                    mToolbar.setVisibility(View.VISIBLE);
+//                    mImmersionBar.statusBarColor(R.color.video_toolbar_background)
+//                            .statusBarDarkFont(true, 0.2f)
+//                            .init();
+//                }
+//            } else {
+//                mTvPlayer.setVisibility(View.GONE);
+//                mToolbar.setVisibility(View.GONE);
+//                mImmersionBar.statusBarColor(R.color.white)
+//                        .statusBarDarkFont(true, 0.2f)
+//                        .init();
+//            }
         });
     }
 
