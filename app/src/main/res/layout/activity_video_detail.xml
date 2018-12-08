@@ -106,13 +106,14 @@
             android:layout_height="match_parent"
             android:minHeight="100dp"
             app:contentScrim="#000"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:title="collapsing title">
 
             <ImageView
                 android:id="@+id/iv_video_preview"
                 android:layout_width="match_parent"
                 android:layout_height="203dp"
+                app:layout_scrollFlags="scroll|snap"
                 android:scaleType="centerCrop" />
 
             <android.support.v7.widget.Toolbar

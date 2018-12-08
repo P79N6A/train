@@ -51,7 +51,7 @@ public class MyApplication extends MultiDexApplication {
         super.onCreate();
         myApplication = this;
         mContext = getApplicationContext();
-        ViewTarget.setTagId(R.id.glide_tag);
+        ViewTarget.setTagId(R.id.glide_tag);//gilde bug
         Typeface mTypeface = Typeface.createFromAsset(getAssets(), "fonts/SourceHanSansCN-Normal.ttf");
         try {
             Field field = Typeface.class.getDeclaredField("MONOSPACE");
@@ -62,15 +62,6 @@ public class MyApplication extends MultiDexApplication {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
-
-//        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-//                .setDefaultFontPath("fonts/SourceHanSans-Normal.otf")
-//                .setFontAttrId(R.attr.fontPath)
-//                .addCustomViewWithSetTypeface(CustomViewWithTypefaceSupport.class)
-//                .addCustomStyle(TextField.class, R.attr.textFieldStyle)
-//                .build()
-//        );
 
         //配置数据库
 //        setupDatabase();
@@ -130,26 +121,6 @@ public class MyApplication extends MultiDexApplication {
         configuration.setThreadNum(3);
         DownloadManager.getInstance().init(getApplicationContext(), configuration);
     }
-
-//    /**
-//     * 配置数据库
-//     */
-//    private void setupDatabase() {
-//        //创建数据库shop.db"
-//        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "shop.db", null);
-//        //获取可写数据库
-//        SQLiteDatabase db = helper.getWritableDatabase();
-//        //获取数据库对象
-//        DaoMaster daoMaster = new DaoMaster(db);
-//        //获取Dao对象管理者
-//        daoSession = daoMaster.newSession();
-//    }
-//
-//    public static DaoSession getDaoInstant() {
-//        return daoSession;
-//    }
-
-
 
 
 }
