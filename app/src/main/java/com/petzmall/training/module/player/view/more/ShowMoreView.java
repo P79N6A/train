@@ -9,7 +9,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.petzmall.training.R;
-import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
+import com.petzmall.training.module.socialCircle.activity.VideoPlayActivity;
 
 public class ShowMoreView extends LinearLayout implements View.OnClickListener,RadioGroup.OnCheckedChangeListener {
 
@@ -28,7 +28,7 @@ public class ShowMoreView extends LinearLayout implements View.OnClickListener,R
     private OnScreenCastButtonClickListener mOnScreenCastButtonClickListener;
     private OnBarrageButtonClickListener mOnBarrageButtonClickListener;
 
-    public ShowMoreView(AliyunPlayerSkinActivity context, AliyunShowMoreValue moreValue) {
+    public ShowMoreView(VideoPlayActivity context, AliyunShowMoreValue moreValue) {
         super(context);
         this.context = context;
         this.moreValue = moreValue;

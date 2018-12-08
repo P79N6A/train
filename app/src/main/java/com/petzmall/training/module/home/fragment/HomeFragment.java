@@ -1,12 +1,9 @@
 package com.petzmall.training.module.home.fragment;
 
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,12 +12,12 @@ import com.github.baseclass.rx.RxBus;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseFragment;
 import com.petzmall.training.base.MyCallBack;
-import com.petzmall.training.module.course.activity.SearchCoursesActivity;
 import com.petzmall.training.module.home.adapter.HomeRecyclerAdapter;
 import com.petzmall.training.module.home.bean.HomeObj;
 import com.petzmall.training.module.home.bean.RefreshObj;
 import com.petzmall.training.module.home.event.RefreshEvent;
 import com.petzmall.training.module.home.network.ApiRequest;
+import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
 import com.petzmall.training.view.ProgressLayout;
 import com.petzmall.training.view.UniversalItemDecoration;
 import com.petzmall.training.view.WrapContentLinearLayoutManager;
@@ -30,14 +27,10 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class HomeFragment extends BaseFragment {
 
@@ -153,6 +146,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onResume() {
+
+
         super.onResume();
 //        if (bn_home != null && bannerList != null) {
 //            bn_home.startAutoPlay();
@@ -164,7 +159,7 @@ public class HomeFragment extends BaseFragment {
     protected void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.toolbar:
-                STActivity(SearchCoursesActivity.class);
+                STActivity(AliyunPlayerSkinActivity.class);
                 break;
 
         }

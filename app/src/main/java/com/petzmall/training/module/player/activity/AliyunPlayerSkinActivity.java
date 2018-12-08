@@ -712,7 +712,7 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
         public void onClick(AliyunScreenMode screenMode, PlayViewType viewType) {
             // 如果当前的Type是Download, 就显示Download对话框
             if (viewType == PlayViewType.Download) {
-                showAddDownloadView(screenMode);
+//                showAddDownloadView(screenMode);
             }
         }
     }
@@ -722,33 +722,33 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
      *
      * @param screenMode
      */
-    private void showAddDownloadView(AliyunScreenMode screenMode) {
-        downloadDialog = new DownloadChoiceDialog(this, screenMode);
-        final AddDownloadView contentView = new AddDownloadView(this, screenMode);
-        contentView.onPrepared(aliyunDownloadMediaInfoList);
-        contentView.setOnViewClickListener(viewClickListener);
-        final View inflate = LayoutInflater.from(getApplicationContext()).inflate(
-                R.layout.alivc_dialog_download_video, null, false);
-        dialogDownloadView = inflate.findViewById(R.id.download_view);
-        downloadDialog.setContentView(contentView);
-        downloadDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialogInterface) {
-            }
-        });
-        downloadDialog.show();
-        downloadDialog.setCanceledOnTouchOutside(true);
-
-        if (screenMode == AliyunScreenMode.Full) {
-            contentView.setOnShowVideoListLisener(new AddDownloadView.OnShowNativeVideoBtnClickListener() {
-                @Override
-                public void onShowVideo() {
-                    downloadViewSetting(dialogDownloadView);
-                    downloadDialog.setContentView(inflate);
-                }
-            });
-        }
-    }
+//    private void showAddDownloadView(AliyunScreenMode screenMode) {
+//        downloadDialog = new DownloadChoiceDialog(this, screenMode);
+////        final AddDownloadView contentView = new AddDownloadView(this, screenMode);
+//        contentView.onPrepared(aliyunDownloadMediaInfoList);
+//        contentView.setOnViewClickListener(viewClickListener);
+//        final View inflate = LayoutInflater.from(getApplicationContext()).inflate(
+//                R.layout.alivc_dialog_download_video, null, false);
+//        dialogDownloadView = inflate.findViewById(R.id.download_view);
+//        downloadDialog.setContentView(contentView);
+//        downloadDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialogInterface) {
+//            }
+//        });
+//        downloadDialog.show();
+//        downloadDialog.setCanceledOnTouchOutside(true);
+//
+//        if (screenMode == AliyunScreenMode.Full) {
+//            contentView.setOnShowVideoListLisener(new AddDownloadView.OnShowNativeVideoBtnClickListener() {
+//                @Override
+//                public void onShowVideo() {
+//                    downloadViewSetting(dialogDownloadView);
+//                    downloadDialog.setContentView(inflate);
+//                }
+//            });
+//        }
+//    }
 
     private Dialog downloadDialog = null;
 
@@ -1358,100 +1358,100 @@ public class AliyunPlayerSkinActivity extends BaseActivity {
         @Override
         public void showMore() {
             AliyunPlayerSkinActivity activity = weakReference.get();
-            activity.showMore(activity);
+//            activity.showMore(activity);
         }
     }
 
-    private void showMore(final AliyunPlayerSkinActivity activity) {
-        showMoreDialog = new AlivcShowMoreDialog(activity);
-        AliyunShowMoreValue moreValue = new AliyunShowMoreValue();
-        moreValue.setSpeed(mAliyunVodPlayerView.getCurrentSpeed());
-        moreValue.setVolume(mAliyunVodPlayerView.getCurrentVolume());
-        moreValue.setScreenBrightness(mAliyunVodPlayerView.getCurrentScreenBrigtness());
-
-        ShowMoreView showMoreView = new ShowMoreView(activity, moreValue);
-        showMoreDialog.setContentView(showMoreView);
-        showMoreDialog.show();
-        showMoreView.setOnDownloadButtonClickListener(new ShowMoreView.OnDownloadButtonClickListener() {
-            @Override
-            public void onDownloadClick() {
-                // 点击下载
-                showMoreDialog.dismiss();
-                if (!"vidsts".equals(PlayParameter.PLAY_PARAM_TYPE)) {
-                    Toast.makeText(activity, "Url类型不支持下载", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                showAddDownloadView(AliyunScreenMode.Full);
-            }
-        });
-
-        showMoreView.setOnScreenCastButtonClickListener(new ShowMoreView.OnScreenCastButtonClickListener() {
-            @Override
-            public void onScreenCastClick() {
-                Toast.makeText(AliyunPlayerSkinActivity.this, "功能开发中, 敬请期待...", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        showMoreView.setOnBarrageButtonClickListener(new ShowMoreView.OnBarrageButtonClickListener() {
-            @Override
-            public void onBarrageClick() {
-                Toast.makeText(AliyunPlayerSkinActivity.this, "功能开发中, 敬请期待...", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        showMoreView.setOnSpeedCheckedChangedListener(new ShowMoreView.OnSpeedCheckedChangedListener() {
-            @Override
-            public void onSpeedChanged(RadioGroup group, int checkedId) {
-                // 点击速度切换
-                if (checkedId == R.id.rb_speed_normal) {
-                    mAliyunVodPlayerView.changeSpeed(SpeedValue.One);
-                } else if (checkedId == R.id.rb_speed_onequartern) {
-                    mAliyunVodPlayerView.changeSpeed(SpeedValue.OneQuartern);
-                } else if (checkedId == R.id.rb_speed_onehalf) {
-                    mAliyunVodPlayerView.changeSpeed(SpeedValue.OneHalf);
-                } else if (checkedId == R.id.rb_speed_twice) {
-                    mAliyunVodPlayerView.changeSpeed(SpeedValue.Twice);
-                }
-
-            }
-        });
-
-        // 亮度seek
-        showMoreView.setOnLightSeekChangeListener(new ShowMoreView.OnLightSeekChangeListener() {
-            @Override
-            public void onStart(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onProgress(SeekBar seekBar, int progress, boolean fromUser) {
-                mAliyunVodPlayerView.setCurrentScreenBrigtness(progress);
-            }
-
-            @Override
-            public void onStop(SeekBar seekBar) {
-
-            }
-        });
-
-        showMoreView.setOnVoiceSeekChangeListener(new ShowMoreView.OnVoiceSeekChangeListener() {
-            @Override
-            public void onStart(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onProgress(SeekBar seekBar, int progress, boolean fromUser) {
-                mAliyunVodPlayerView.setCurrentVolume(progress);
-            }
-
-            @Override
-            public void onStop(SeekBar seekBar) {
-
-            }
-        });
-
-    }
+//    private void showMore(final AliyunPlayerSkinActivity activity) {
+//        showMoreDialog = new AlivcShowMoreDialog(activity);
+//        AliyunShowMoreValue moreValue = new AliyunShowMoreValue();
+//        moreValue.setSpeed(mAliyunVodPlayerView.getCurrentSpeed());
+//        moreValue.setVolume(mAliyunVodPlayerView.getCurrentVolume());
+//        moreValue.setScreenBrightness(mAliyunVodPlayerView.getCurrentScreenBrigtness());
+//
+////        ShowMoreView showMoreView = new ShowMoreView(activity, moreValue);
+////        showMoreDialog.setContentView(showMoreView);
+//        showMoreDialog.show();
+//        showMoreView.setOnDownloadButtonClickListener(new ShowMoreView.OnDownloadButtonClickListener() {
+//            @Override
+//            public void onDownloadClick() {
+//                // 点击下载
+//                showMoreDialog.dismiss();
+//                if (!"vidsts".equals(PlayParameter.PLAY_PARAM_TYPE)) {
+//                    Toast.makeText(activity, "Url类型不支持下载", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                showAddDownloadView(AliyunScreenMode.Full);
+//            }
+//        });
+//
+//        showMoreView.setOnScreenCastButtonClickListener(new ShowMoreView.OnScreenCastButtonClickListener() {
+//            @Override
+//            public void onScreenCastClick() {
+//                Toast.makeText(AliyunPlayerSkinActivity.this, "功能开发中, 敬请期待...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        showMoreView.setOnBarrageButtonClickListener(new ShowMoreView.OnBarrageButtonClickListener() {
+//            @Override
+//            public void onBarrageClick() {
+//                Toast.makeText(AliyunPlayerSkinActivity.this, "功能开发中, 敬请期待...", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        showMoreView.setOnSpeedCheckedChangedListener(new ShowMoreView.OnSpeedCheckedChangedListener() {
+//            @Override
+//            public void onSpeedChanged(RadioGroup group, int checkedId) {
+//                // 点击速度切换
+//                if (checkedId == R.id.rb_speed_normal) {
+//                    mAliyunVodPlayerView.changeSpeed(SpeedValue.One);
+//                } else if (checkedId == R.id.rb_speed_onequartern) {
+//                    mAliyunVodPlayerView.changeSpeed(SpeedValue.OneQuartern);
+//                } else if (checkedId == R.id.rb_speed_onehalf) {
+//                    mAliyunVodPlayerView.changeSpeed(SpeedValue.OneHalf);
+//                } else if (checkedId == R.id.rb_speed_twice) {
+//                    mAliyunVodPlayerView.changeSpeed(SpeedValue.Twice);
+//                }
+//
+//            }
+//        });
+//
+//        // 亮度seek
+//        showMoreView.setOnLightSeekChangeListener(new ShowMoreView.OnLightSeekChangeListener() {
+//            @Override
+//            public void onStart(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onProgress(SeekBar seekBar, int progress, boolean fromUser) {
+//                mAliyunVodPlayerView.setCurrentScreenBrigtness(progress);
+//            }
+//
+//            @Override
+//            public void onStop(SeekBar seekBar) {
+//
+//            }
+//        });
+//
+//        showMoreView.setOnVoiceSeekChangeListener(new ShowMoreView.OnVoiceSeekChangeListener() {
+//            @Override
+//            public void onStart(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onProgress(SeekBar seekBar, int progress, boolean fromUser) {
+//                mAliyunVodPlayerView.setCurrentVolume(progress);
+//            }
+//
+//            @Override
+//            public void onStop(SeekBar seekBar) {
+//
+//            }
+//        });
+//
+//    }
 
     /**
      * 获取url的scheme

@@ -3,6 +3,7 @@ package com.petzmall.training.tools;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Browser;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -15,6 +16,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import com.alivc.player.VcPlayerLog;
 import com.petzmall.training.view.spannable.SpannableClickable;
 
 import java.util.regex.Matcher;
@@ -184,6 +186,19 @@ public class Utils {
             sp = new SpannableStringBuilder();
         }
         return sp;
+    }
+
+    public static boolean isStrangePhone() {
+        boolean strangePhone = "mx5".equalsIgnoreCase(Build.DEVICE)
+                || "Redmi Note2".equalsIgnoreCase(Build.DEVICE)
+                || "Z00A_1".equalsIgnoreCase(Build.DEVICE)
+                || "hwH60-L02".equalsIgnoreCase(Build.DEVICE)
+                || "hermes".equalsIgnoreCase(Build.DEVICE)
+                || ("V4".equalsIgnoreCase(Build.DEVICE) && "Meitu".equalsIgnoreCase(Build.MANUFACTURER))
+                || ("m1metal".equalsIgnoreCase(Build.DEVICE) && "Meizu".equalsIgnoreCase(Build.MANUFACTURER));
+
+        VcPlayerLog.e("lfj1115 ", " Build.Device = " + Build.DEVICE + " , isStrange = " + strangePhone);
+        return strangePhone;
     }
 }
 

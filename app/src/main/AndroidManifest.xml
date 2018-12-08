@@ -104,13 +104,13 @@
         </activity>
         <activity android:name="com.petzmall.training.MainActivity"
             >
-
-        </activity>
-        <activity android:name="com.petzmall.training.module.my.activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.petzmall.training.module.my.activity.LoginActivity" >
+
         </activity>
         <activity android:name="com.petzmall.training.activity.CommitIdCardActivity"/>
         <activity android:name="com.petzmall.training.module.home.activity.ChannelActivity"/>
@@ -129,7 +129,7 @@
         <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoActivity" />
 
 
-        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideotestActivity" />
+        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoPlayActivity" />
 
         <activity android:name="com.petzmall.training.module.my.activity.LoginPhoneActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"

@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseFragment;
-import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
-import com.petzmall.training.module.socialCircle.activity.VideotestActivity;
+import com.petzmall.training.module.socialCircle.activity.VideoPlayActivity;
 import com.petzmall.training.module.socialCircle.adapter.MyPagerAdapter;
 import com.petzmall.training.view.MyViewPager;
 
@@ -29,9 +28,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class SocialCircleFragment extends BaseFragment {
 
@@ -124,7 +121,7 @@ public class SocialCircleFragment extends BaseFragment {
     protected void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.app_right_iv:
-                STActivity(VideotestActivity.class);
+                STActivity(VideoPlayActivity.class);
                 break;
 
         }

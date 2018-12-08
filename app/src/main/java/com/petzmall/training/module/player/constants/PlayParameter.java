@@ -13,7 +13,8 @@ public class PlayParameter {
      * localSource: url类型
      *
      */
-    public static  String PLAY_PARAM_TYPE = "vidsts";
+
+    public static  String PLAY_PARAM_TYPE = "localSource";
 
     /**
      * vid, 初始为: 9fb028c29acb421cb634c77cf4ebe078
