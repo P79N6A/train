@@ -859,7 +859,7 @@ public class VideoPlayActivity extends BaseActivity {
                 mAliyunVodPlayerView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 
                 //设置view的布局，宽高之类
-                LinearLayout.LayoutParams aliVcVideoViewLayoutParams = (LinearLayout.LayoutParams)mAliyunVodPlayerView
+                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams)mAliyunVodPlayerView
                         .getLayoutParams();
                 aliVcVideoViewLayoutParams.height = (int)(ScreenUtils.getWidth(this) * 9.0f / 16);
                 aliVcVideoViewLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -882,10 +882,11 @@ public class VideoPlayActivity extends BaseActivity {
                 }
 
                 //设置view的布局，宽高
-                LinearLayout.LayoutParams aliVcVideoViewLayoutParams = (LinearLayout.LayoutParams)mAliyunVodPlayerView
+                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams)mAliyunVodPlayerView
                         .getLayoutParams();
-                aliVcVideoViewLayoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT;
+                aliVcVideoViewLayoutParams.height = Utils.getScreenHeight(getApplication());
                 aliVcVideoViewLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                appBarParams.setScrollFlags(0);
                 //                if (!isStrangePhone()) {
                 //                    aliVcVideoViewLayoutParams.topMargin = 0;
                 //                }
