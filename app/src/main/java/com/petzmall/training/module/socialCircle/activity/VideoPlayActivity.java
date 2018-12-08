@@ -98,8 +98,7 @@ public class VideoPlayActivity extends BaseActivity {
     AppBarLayout mAppBar;
     @BindView(R.id.view_pager)
     ViewPager mViewPager;
-    @BindView(R.id.main_content)
-    CoordinatorLayout mMainContent;
+
 
     @BindView(R.id.magic_indicator)
     MagicIndicator magicIndicator;
@@ -288,7 +287,9 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
     private void onSeekStart() {
-        tvLogs.append(format.format(new Date()) + getString(R.string.log_seek_start) + "\n");
+        Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_seek_start,
+                Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -310,7 +311,8 @@ public class VideoPlayActivity extends BaseActivity {
         }
     }
     private void onSeekComplete() {
-        tvLogs.append(format.format(new Date()) + getString(R.string.log_seek_completed) + "\n");
+        Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_seek_completed,
+                Toast.LENGTH_SHORT).show();
     }
 
 
@@ -338,9 +340,13 @@ public class VideoPlayActivity extends BaseActivity {
      */
     private void onPlayStateSwitch(IAliyunVodPlayer.PlayerState playerState) {
         if (playerState == IAliyunVodPlayer.PlayerState.Started) {
-            tvLogs.append(format.format(new Date()) + " 暂停 \n");
+//            tvLogs.append(format.format(new Date()) + " 暂停 \n");
+            Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_play_pause,
+                    Toast.LENGTH_SHORT).show();
         } else if (playerState == IAliyunVodPlayer.PlayerState.Paused) {
-            tvLogs.append(format.format(new Date()) + " 开始 \n");
+//            tvLogs.append(format.format(new Date()) + " 开始 \n");
+            Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_play_start,
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -832,6 +838,13 @@ public class VideoPlayActivity extends BaseActivity {
         }
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        //解决某些手机上锁屏之后会出现标题栏的问题。
+        updatePlayerViewMode();
+    }
+
     private void updatePlayerViewMode() {
         if (mAliyunVodPlayerView != null) {
             int orientation = getResources().getConfiguration().orientation;
@@ -895,6 +908,11 @@ public class VideoPlayActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        updatePlayerViewMode();
+    }
 
     private void initAppBar() {
         mAppBar.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {

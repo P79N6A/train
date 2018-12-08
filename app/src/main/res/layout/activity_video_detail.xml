@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:id="@+id/main_content"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/alivc_color_player_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical">
+        <com.petzmall.training.module.player.widget.AliyunVodPlayerView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="203dp"
+
+            />
+    </LinearLayout>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/alivc_color_player_background"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
-
-
+ >
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
@@ -28,33 +44,7 @@
             >
 
 
-            <android.support.v4.widget.NestedScrollView
-                android:layout_width="match_parent"
-                android:layout_height="203dp"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <!-- Your scrolling content -->
-                <!--<ImageView-->
-                    <!--android:id="@+id/iv_video_preview"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="203dp"-->
-                    <!--app:layout_scrollFlags="scroll|snap"-->
-                    <!--app:layout_collapseMode="parallax"-->
-                    <!--app:layout_collapseParallaxMultiplier="0.5"-->
-                    <!--android:scaleType="centerCrop" />-->
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:orientation="vertical">
-                <com.petzmall.training.module.player.widget.AliyunVodPlayerView
-                    android:id="@+id/video_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="203dp"
-                    app:layout_collapseMode="parallax"
-                    app:layout_collapseParallaxMultiplier="0.5"
-                     />
-               </LinearLayout>
-            </android.support.v4.widget.NestedScrollView>
 
 
             <android.support.v7.widget.Toolbar
@@ -185,7 +175,7 @@
     </com.github.customview.MyLinearLayout>
 </android.support.design.widget.CoordinatorLayout>
 
-
+</LinearLayout>
 
 
 

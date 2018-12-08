@@ -129,7 +129,11 @@
         <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoActivity" />
 
 
-        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoPlayActivity" />
+        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoPlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            >
+        </activity>
 
         <activity android:name="com.petzmall.training.module.my.activity.LoginPhoneActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
