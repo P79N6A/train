@@ -40,7 +40,7 @@ public class VidStsUtil {
 //                    String accessKeyId = securityTokenInfo.getString("AccessKeyId");
 //                    String accessKeySecret = securityTokenInfo.getString("AccessKeySecret");
 //                    String securityToken = securityTokenInfo.getString("SecurityToken");
-                    String response = HttpClientUtil.doGet("http://192.168.1.38:8082/sts/get");
+                    String response = HttpClientUtil.doPost("http://192.168.1.38:8080/console/outer/sts/get","");
                     Gson gson = new Gson();
                     Sts sts=gson.fromJson(response, Sts.class);
                     String accessKeyId = sts.getAccessKeyId();
@@ -49,7 +49,7 @@ public class VidStsUtil {
                     VcPlayerLog.e(TAG, "accessKeyId = " + accessKeyId + " , accessKeySecret = " + accessKeySecret +
                             " , securityToken = " + securityToken);
                     AliyunVidSts vidSts = new AliyunVidSts();
-                    vidSts.setVid("bc971152b60b4c0a8edeb3c993582f76");
+                    vidSts.setVid("9bef43e36c2f42ec9d7b34ec80ead12a");
                     vidSts.setAcId(accessKeyId);
                     vidSts.setSecurityToken(securityToken);
                     vidSts.setAkSceret(accessKeySecret);

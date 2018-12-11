@@ -4,12 +4,13 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,7 +18,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -82,6 +82,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -106,10 +107,11 @@ public class VideoPlayActivity extends BaseActivity {
     @BindView(R.id.comment_linear)
     LinearLayout commentLinear;
 
-   //播放器相关
+    //播放器相关
     @BindView(R.id.video_view)
     AliyunVodPlayerView mAliyunVodPlayerView; //播放器
     private static final String DEFAULT_URL = "http://player.alicdn.com/video/aliyunmedia.mp4";
+
     private SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss.SS");
     private List<String> logStrs = new ArrayList<>();
     private ErrorInfo currentError = ErrorInfo.Normal;
@@ -118,11 +120,12 @@ public class VideoPlayActivity extends BaseActivity {
     private AlivcShowMoreDialog showMoreDialog;
     private AliyunScreenMode currentScreenMode = AliyunScreenMode.Small;
     List<AliyunDownloadMediaInfo> aliyunDownloadMediaInfoList;
+    private static final String DEFAULT_VID = "bc971152b60b4c0a8edeb3c993582f76";
+    private boolean  starting; //是否暂停
     /**
      * get StsToken stats
      */
     private boolean inRequest;
-
 
 
     //    @BindView(R.id.button)
@@ -134,7 +137,6 @@ public class VideoPlayActivity extends BaseActivity {
     private List<Fragment> fragments = new ArrayList<>();
     private MyPagerAdapter adapter;
     private CollapsingToolbarLayoutState state;
-
 
     VideoIntroduceFragment videoIntroduceFragment;
     CommentsFragment commentsFragment;
@@ -149,10 +151,10 @@ public class VideoPlayActivity extends BaseActivity {
     TextView commentUserName, commentTime, commentContent;
     boolean addHeader = false;//是否添加了头部
     XRecyclerView recyclerView;
-
-    int i0, i1;
+    int i0, i1, i2;
     View appBarChildAt;
     AppBarLayout.LayoutParams appBarParams;
+
 
 
     private enum CollapsingToolbarLayoutState {
@@ -189,12 +191,9 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     protected void initView() {
         initAppBar();
+        requestVidSts();
         initAliyunPlayerView();
         commentSecondAdapter = new CommentSecondAdapter(mContext, 0);
-//        //设置图片
-//        Glide.with(mContext)
-//                .load("https://p.pstatp.com/weili/bl/55311344760656633.jpg")
-//                .into(mIvVideoPreview);
 
         //设置TabLayout点击事件
         fragments.add(new VideoIntroduceFragment());
@@ -205,16 +204,25 @@ public class VideoPlayActivity extends BaseActivity {
         //控制AppBarLayout折叠
         i0 = AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL;
         i1 = AppBarLayout.LayoutParams.SCROLL_FLAG_EXIT_UNTIL_COLLAPSED;
+        i2 = AppBarLayout.LayoutParams.SCROLL_FLAG_SNAP;
         appBarChildAt = mAppBar.getChildAt(0);
         appBarParams = (AppBarLayout.LayoutParams) appBarChildAt.getLayoutParams();
-
-
     }
 
 
+    /**
+     * 请求sts
+     */
+    private void requestVidSts() {
+//        if (inRequest) {
+//            return;
+//        }
+//        inRequest = true;
+        PlayParameter.PLAY_PARAM_VID = DEFAULT_VID;
+        VidStsUtil.getVidSts(PlayParameter.PLAY_PARAM_VID, new VideoPlayActivity.MyStsListener(this));
+    }
 
     private void initAliyunPlayerView() {
-
         //保持屏幕敞亮
         mAliyunVodPlayerView.setKeepScreenOn(true);
         PlayParameter.PLAY_PARAM_URL = DEFAULT_URL;
@@ -239,31 +247,6 @@ public class VideoPlayActivity extends BaseActivity {
         mAliyunVodPlayerView.setOnSeekStartListener(new MySeekStartListener(this));
         mAliyunVodPlayerView.enableNativeLog();
 
-        if ("localSource".equals(PlayParameter.PLAY_PARAM_TYPE)) {
-            AliyunLocalSource.AliyunLocalSourceBuilder alsb = new AliyunLocalSource.AliyunLocalSourceBuilder();
-            alsb.setSource(PlayParameter.PLAY_PARAM_URL);
-            Uri uri = Uri.parse(PlayParameter.PLAY_PARAM_URL);
-            if ("rtmp".equals(uri.getScheme())) {
-                alsb.setTitle("");
-            }
-            AliyunLocalSource localSource = alsb.build();
-            if (mAliyunVodPlayerView != null) {
-                mAliyunVodPlayerView.setLocalSource(localSource);
-            }
-
-        } else if ("vidsts".equals(PlayParameter.PLAY_PARAM_TYPE)) {
-            if (!inRequest) {
-                AliyunVidSts vidSts = new AliyunVidSts();
-                vidSts.setVid(PlayParameter.PLAY_PARAM_VID);
-                vidSts.setAcId(PlayParameter.PLAY_PARAM_AK_ID);
-                vidSts.setAkSceret(PlayParameter.PLAY_PARAM_AK_SECRE);
-                vidSts.setSecurityToken(PlayParameter.PLAY_PARAM_SCU_TOKEN);
-                if (mAliyunVodPlayerView != null) {
-                    mAliyunVodPlayerView.setVidSts(vidSts);
-                }
-//                downloadManager.prepareDownloadMedia(vidSts);
-            }
-        }
 
 
     }
@@ -293,7 +276,6 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
 
-
     //seek完成
     private static class MySeekCompleteListener implements IAliyunVodPlayer.OnSeekCompleteListener {
         WeakReference<VideoPlayActivity> weakReference;
@@ -310,6 +292,7 @@ public class VideoPlayActivity extends BaseActivity {
             }
         }
     }
+
     private void onSeekComplete() {
         Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_seek_completed,
                 Toast.LENGTH_SHORT).show();
@@ -341,16 +324,22 @@ public class VideoPlayActivity extends BaseActivity {
     private void onPlayStateSwitch(IAliyunVodPlayer.PlayerState playerState) {
         if (playerState == IAliyunVodPlayer.PlayerState.Started) {
 //            tvLogs.append(format.format(new Date()) + " 暂停 \n");
+            appBarParams.setScrollFlags(i0 | i1 | i2);//重置折叠效果
+            appBarChildAt.setLayoutParams(appBarParams);
+            starting = false;//暂停
             Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_play_pause,
                     Toast.LENGTH_SHORT).show();
+
         } else if (playerState == IAliyunVodPlayer.PlayerState.Paused) {
+            appBarParams.setScrollFlags(0);//这个加了之后不可滑动
+            appBarChildAt.setLayoutParams(appBarParams);
+            starting = true;//播放
 //            tvLogs.append(format.format(new Date()) + " 开始 \n");
             Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_play_start,
                     Toast.LENGTH_SHORT).show();
         }
 
     }
-
 
 
     private static class MyShowMoreClickLisener implements ControlView.OnShowMoreClickListener {
@@ -511,13 +500,12 @@ public class VideoPlayActivity extends BaseActivity {
     private void hideDownloadDialog(boolean from, AliyunScreenMode currentMode) {
 
 //        if (downloadDialog != null) {
-            if (currentScreenMode != currentMode) {
+        if (currentScreenMode != currentMode) {
 //                downloadDialog.dismiss();
-                currentScreenMode = currentMode;
-            }
+            currentScreenMode = currentMode;
+        }
 //        }
     }
-
 
 
     private class MyPlayViewClickListener implements AliyunVodPlayerView.OnPlayerViewClickListener {
@@ -529,6 +517,7 @@ public class VideoPlayActivity extends BaseActivity {
             }
         }
     }
+
     private static class MyStoppedListener implements IAliyunVodPlayer.OnStoppedListener {
 
         private WeakReference<VideoPlayActivity> activityWeakReference;
@@ -569,12 +558,16 @@ public class VideoPlayActivity extends BaseActivity {
             }
         }
     }
+
     private void onPrepared() {
         logStrs.add(format.format(new Date()) + getString(R.string.log_prepare_success));
 
 //        for (String log : logStrs) {
 //            tvLogs.append(log + "\n");
 //        }
+        appBarParams.setScrollFlags(0);//这个加了之后不可滑动
+        appBarChildAt.setLayoutParams(appBarParams);
+//        nestedScrollview.setNestedScrollingEnabled(false);
         Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.toast_prepare_success,
                 Toast.LENGTH_SHORT).show();
     }
@@ -632,7 +625,7 @@ public class VideoPlayActivity extends BaseActivity {
             }
             // 如果当前播放列表为空, 网络重连后需要重新请求sts和播放列表, 其他情况不需要
             if (alivcVideoInfos != null && alivcVideoInfos.size() == 0) {
-                VidStsUtil.getVidSts(PlayParameter.PLAY_PARAM_VID, new VideoPlayActivity.MyStsListener(this));
+                VidStsUtil.getVidSts(PlayParameter.PLAY_PARAM_VID, new MyStsListener(this));
             }
         }
     }
@@ -676,6 +669,33 @@ public class VideoPlayActivity extends BaseActivity {
         PlayParameter.PLAY_PARAM_SCU_TOKEN = token;
 
         inRequest = false;
+        if ("localSource".equals(PlayParameter.PLAY_PARAM_TYPE)) {
+            AliyunLocalSource.AliyunLocalSourceBuilder alsb = new AliyunLocalSource.AliyunLocalSourceBuilder();
+            alsb.setSource(PlayParameter.PLAY_PARAM_URL);
+            Uri uri = Uri.parse(PlayParameter.PLAY_PARAM_URL);
+            if ("rtmp".equals(uri.getScheme())) {
+                alsb.setTitle("");
+            }
+            AliyunLocalSource localSource = alsb.build();
+            if (mAliyunVodPlayerView != null) {
+                mAliyunVodPlayerView.setLocalSource(localSource);
+            }
+
+        } else if ("vidsts".equals(PlayParameter.PLAY_PARAM_TYPE)) {
+//            if (!inRequest) {
+            AliyunVidSts vidSts = new AliyunVidSts();
+            vidSts.setVid(PlayParameter.PLAY_PARAM_VID);
+            vidSts.setAcId(PlayParameter.PLAY_PARAM_AK_ID);
+            vidSts.setAkSceret(PlayParameter.PLAY_PARAM_AK_SECRE);
+            vidSts.setSecurityToken(PlayParameter.PLAY_PARAM_SCU_TOKEN);
+            if (mAliyunVodPlayerView != null) {
+                mAliyunVodPlayerView.setVidSts(vidSts);
+            }
+//                downloadManager.prepareDownloadMedia(vidSts);
+//            }
+        }
+
+
 
         // 视频列表数据为0时, 加载列表
         if (alivcVideoInfos != null && alivcVideoInfos.size() == 0) {
@@ -714,6 +734,7 @@ public class VideoPlayActivity extends BaseActivity {
         // 当前视频播放结束, 播放下一个视频
         onNext();
     }
+
     private void onNext() {
         if (currentError == ErrorInfo.UnConnectInternet) {
             // 此处需要判断网络和播放类型
@@ -741,7 +762,6 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
 
-
     private static class MyFrameInfoListener implements IAliyunVodPlayer.OnFirstFrameStartListener {
 
         private WeakReference<VideoPlayActivity> activityWeakReference;
@@ -759,27 +779,28 @@ public class VideoPlayActivity extends BaseActivity {
             }
         }
     }
+
     private void onFirstFrameStart() {
         Map<String, String> debugInfo = mAliyunVodPlayerView.getAllDebugInfo();
         long createPts = 0;
         if (debugInfo.get("create_player") != null) {
             String time = debugInfo.get("create_player");
-            createPts = (long)Double.parseDouble(time);
+            createPts = (long) Double.parseDouble(time);
             logStrs.add(format.format(new Date(createPts)) + getString(R.string.log_player_create_success));
         }
         if (debugInfo.get("open-url") != null) {
             String time = debugInfo.get("open-url");
-            long openPts = (long)Double.parseDouble(time) + createPts;
+            long openPts = (long) Double.parseDouble(time) + createPts;
             logStrs.add(format.format(new Date(openPts)) + getString(R.string.log_open_url_success));
         }
         if (debugInfo.get("find-stream") != null) {
             String time = debugInfo.get("find-stream");
-            long findPts = (long)Double.parseDouble(time) + createPts;
+            long findPts = (long) Double.parseDouble(time) + createPts;
             logStrs.add(format.format(new Date(findPts)) + getString(R.string.log_request_stream_success));
         }
         if (debugInfo.get("open-stream") != null) {
             String time = debugInfo.get("open-stream");
-            long openPts = (long)Double.parseDouble(time) + createPts;
+            long openPts = (long) Double.parseDouble(time) + createPts;
             logStrs.add(format.format(new Date(openPts)) + getString(R.string.log_start_open_stream));
         }
         logStrs.add(format.format(new Date()) + getString(R.string.log_first_frame_played));
@@ -828,7 +849,6 @@ public class VideoPlayActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -859,9 +879,9 @@ public class VideoPlayActivity extends BaseActivity {
                 mAliyunVodPlayerView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
 
                 //设置view的布局，宽高之类
-                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams)mAliyunVodPlayerView
+                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams) mAliyunVodPlayerView
                         .getLayoutParams();
-                aliVcVideoViewLayoutParams.height = (int)(ScreenUtils.getWidth(this) * 9.0f / 16);
+                aliVcVideoViewLayoutParams.height = (int) (ScreenUtils.getWidth(this) * 9.0f / 16);
                 aliVcVideoViewLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 //                if (!isStrangePhone()) {
                 //                    aliVcVideoViewLayoutParams.topMargin = getSupportActionBar().getHeight();
@@ -882,7 +902,7 @@ public class VideoPlayActivity extends BaseActivity {
                 }
 
                 //设置view的布局，宽高
-                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams)mAliyunVodPlayerView
+                CollapsingToolbarLayout.LayoutParams aliVcVideoViewLayoutParams = (CollapsingToolbarLayout.LayoutParams) mAliyunVodPlayerView
                         .getLayoutParams();
                 aliVcVideoViewLayoutParams.height = Utils.getScreenHeight(getApplication());
                 aliVcVideoViewLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
@@ -1033,7 +1053,7 @@ public class VideoPlayActivity extends BaseActivity {
     protected void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
-                appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
+                appBarParams.setScrollFlags(i0 | i1 | i2);//重置折叠效果
                 appBarChildAt.setLayoutParams(appBarParams);
                 break;
             case R.id.tv_player:
@@ -1082,8 +1102,13 @@ public class VideoPlayActivity extends BaseActivity {
         cancelPop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
-                appBarChildAt.setLayoutParams(appBarParams);
+                if(starting){
+                    appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
+                    appBarChildAt.setLayoutParams(appBarParams);
+                }else{
+                    appBarParams.setScrollFlags(i0 | i1 | i2);//否则可以滑动
+                    appBarChildAt.setLayoutParams(appBarParams);
+                }
                 popupWindow.dismiss();
                 addHeader = false;
             }
@@ -1163,9 +1188,14 @@ public class VideoPlayActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if (popupWindow != null && popupWindow.isShowing()) {
-            appBarParams.setScrollFlags(i0 | i1);//重置折叠效果
-            appBarChildAt.setLayoutParams(appBarParams);
             popupWindow.dismiss();
+            if(starting){
+                appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
+                appBarChildAt.setLayoutParams(appBarParams);
+            }else{
+                appBarParams.setScrollFlags(i0 | i1 | i2);//否则可以滑动
+                appBarChildAt.setLayoutParams(appBarParams);
+            }
             addHeader = false;
         } else {
             super.onBackPressed();

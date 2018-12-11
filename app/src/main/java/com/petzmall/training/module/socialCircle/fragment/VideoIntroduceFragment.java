@@ -2,6 +2,7 @@ package com.petzmall.training.module.socialCircle.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -22,7 +23,9 @@ import com.petzmall.training.base.MyCallBack;
 import com.petzmall.training.module.socialCircle.adapter.RecyclerviewVideoAdapter;
 import com.petzmall.training.module.socialCircle.bean.Video;
 import com.petzmall.training.module.socialCircle.network.ApiRequest;
+import com.petzmall.training.view.DividerGridItemDecoration;
 import com.petzmall.training.view.ProgressLayout;
+import com.petzmall.training.view.UniversalItemDecoration;
 import com.petzmall.training.view.WrapContentLinearLayoutManager;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -39,12 +42,10 @@ import butterknife.BindView;
 
 public class VideoIntroduceFragment extends BaseFragment {
     public static final String ARGS_PAGE = "args_page";
-    private static final String[] CHANNELS = new String[]{"简介12", "大纲111", "讨论1111"};
     @BindView(R.id.recyclerview)
     XRecyclerView recyclerView;
     @BindView(R.id.pl_load)
     ProgressLayout plLoad;
-    private List<String> mDataList = Arrays.asList(CHANNELS);
 //    @BindView(R.id.fl_label)
 //    FlowLayout fl_label;
     RecyclerviewVideoAdapter adapter;
@@ -69,6 +70,17 @@ public class VideoIntroduceFragment extends BaseFragment {
     protected void initView() {
         adapter=new RecyclerviewVideoAdapter(mContext,0);
         recyclerView.setLayoutManager(new WrapContentLinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.addItemDecoration(new UniversalItemDecoration() {
+            @Override
+            public Decoration getItemOffsets(int position) {
+                ColorDecoration decoration = new ColorDecoration();
+                if (position > 1) {
+                decoration.bottom = 1;
+                decoration.decorationColor = getResources().getColor(R.color.c_divider);
+                }
+                return decoration;
+            }
+        });
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
