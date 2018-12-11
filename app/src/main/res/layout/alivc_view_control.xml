@@ -175,24 +175,25 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:orientation="vertical"
         android:layout_marginEnd="@dimen/alivc_screen_lock_left_margin"
-        android:layout_marginRight="@dimen/alivc_screen_lock_left_margin">
+        android:layout_marginRight="@dimen/alivc_screen_lock_left_margin"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/alivc_screen_shot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alivc_screen_shot"
             android:layout_marginBottom="4dp"
-            />
+            android:src="@drawable/alivc_screen_shot"
+            android:visibility="gone" />
 
         <ImageView
-            android:layout_marginTop="4dp"
             android:id="@+id/alivc_screen_recoder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alivc_recorder" />
+            android:layout_marginTop="4dp"
+            android:src="@drawable/alivc_recorder"
+            android:visibility="gone" />
 
     </LinearLayout>
 
