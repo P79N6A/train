@@ -61,7 +61,7 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
     private ImageView mPlayStateBtn;
 
     //下载
-    private ImageView mTitleDownload;
+//    private ImageView mTitleDownload;
 
 
     //锁定屏幕方向相关
@@ -142,8 +142,8 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
     private OnScreenModeClickListener mOnScreenModeClickListener;
     // 显示更多
     private OnShowMoreClickListener mOnShowMoreClickListener;
-    private ImageView mScreenShot;
-    private ImageView mScreenRecorder;
+//    private ImageView mScreenShot;
+//    private ImageView mScreenRecorder;
 
     public ControlView(Context context) {
         super(context);
@@ -176,13 +176,13 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
 
         mTitlebarBackBtn = (ImageView) findViewById(R.id.alivc_title_back);
         mTitlebarText = (TextView) findViewById(R.id.alivc_title_title);
-        mTitleDownload = (ImageView)findViewById(R.id.alivc_title_download);
+//        mTitleDownload = (ImageView)findViewById(R.id.alivc_title_download);
         mTitleMore = findViewById(R.id.alivc_title_more);
         mScreenModeBtn = (ImageView) findViewById(R.id.alivc_screen_mode);
         mScreenLockBtn = (ImageView) findViewById(R.id.alivc_screen_lock);
         mPlayStateBtn = (ImageView) findViewById(R.id.alivc_player_state);
-        mScreenShot = findViewById(R.id.alivc_screen_shot);
-        mScreenRecorder = findViewById(R.id.alivc_screen_recoder);
+//        mScreenShot = findViewById(R.id.alivc_screen_shot);
+//        mScreenRecorder = findViewById(R.id.alivc_screen_recoder);
 
         mLargeInfoBar = findViewById(R.id.alivc_info_large_bar);
         mLargePositionText = (TextView) findViewById(R.id.alivc_info_large_position);
@@ -208,14 +208,14 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
             }
         });
 //下载菜单监听
-        mTitleDownload.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onDownloadClickListener != null) {
-                    onDownloadClickListener.onDownloadClick();
-                }
-            }
-        });
+//        mTitleDownload.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (onDownloadClickListener != null) {
+//                    onDownloadClickListener.onDownloadClick();
+//                }
+//            }
+//        });
 //控制栏的播放按钮监听
         mPlayStateBtn.setOnClickListener(new OnClickListener() {
             @Override
@@ -235,21 +235,21 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
             }
         });
 
-        // 截图按钮监听
-        mScreenShot.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "功能正在开发中, 敬请期待....", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        // 录制按钮监听
-        mScreenRecorder.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "功能正在开发中, 敬请期待....", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        // 截图按钮监听
+//        mScreenShot.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getContext(), "功能正在开发中, 敬请期待....", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        // 录制按钮监听
+//        mScreenRecorder.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getContext(), "功能正在开发中, 敬请期待....", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
 
@@ -395,9 +395,9 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
      */
     public void updateDownloadBtn() {
         if (mAliyunScreenMode == AliyunScreenMode.Full || "localSource".equals(PlayParameter.PLAY_PARAM_TYPE)) {
-            mTitleDownload.setVisibility(GONE);
+//            mTitleDownload.setVisibility(GONE);
         } else if (mAliyunScreenMode == AliyunScreenMode.Small || "vidsts".equals(PlayParameter.PLAY_PARAM_TYPE)){
-            mTitleDownload.setVisibility(VISIBLE);
+//            mTitleDownload.setVisibility(VISIBLE);
         }
     }
 
@@ -406,9 +406,9 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
      */
     private void updateScreenRecorderBtn() {
         if (mAliyunScreenMode == AliyunScreenMode.Full) {
-            mScreenRecorder.setVisibility(VISIBLE);
+//            mScreenRecorder.setVisibility(VISIBLE);
         } else {
-            mScreenRecorder.setVisibility(GONE);
+//            mScreenRecorder.setVisibility(GONE);
         }
     }
 
@@ -417,9 +417,9 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
      */
     private void updateScreenShotBtn() {
         if (mAliyunScreenMode == AliyunScreenMode.Full) {
-            mScreenShot.setVisibility(VISIBLE);
+//            mScreenShot.setVisibility(VISIBLE);
         } else {
-            mScreenShot.setVisibility(GONE);
+//            mScreenShot.setVisibility(GONE);
         }
     }
 
@@ -429,10 +429,10 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
     private void updateShowMoreBtn() {
         if (mAliyunScreenMode == AliyunScreenMode.Full) {
             mTitleMore.setVisibility(VISIBLE);
-            mTitleDownload.setVisibility(GONE);
+//            mTitleDownload.setVisibility(GONE);
         } else {
             mTitleMore.setVisibility(GONE);
-            mTitleDownload.setVisibility(VISIBLE);
+//            mTitleDownload.setVisibility(VISIBLE);
         }
     }
 
@@ -702,13 +702,13 @@ public class ControlView extends RelativeLayout implements ViewAction, ITheme {
 
         if (mAliyunScreenMode == AliyunScreenMode.Full) {
             mScreenLockBtn.setVisibility(VISIBLE);
-            mScreenRecorder.setVisibility(VISIBLE);
-            mScreenShot.setVisibility(VISIBLE);
+//            mScreenRecorder.setVisibility(VISIBLE);
+//            mScreenShot.setVisibility(VISIBLE);
             mTitleMore.setVisibility(VISIBLE);
         } else {
             mScreenLockBtn.setVisibility(GONE);
-            mScreenRecorder.setVisibility(GONE);
-            mScreenShot.setVisibility(GONE);
+//            mScreenRecorder.setVisibility(GONE);
+//            mScreenShot.setVisibility(GONE);
             mTitleMore.setVisibility(GONE);
         }
     }

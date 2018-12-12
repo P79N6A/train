@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
@@ -36,7 +38,6 @@ import com.petzmall.training.PopupWindow.CommonPopupWindow;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 import com.petzmall.training.base.MyCallBack;
-import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
 import com.petzmall.training.module.player.constants.PlayParameter;
 import com.petzmall.training.module.player.playlist.AlivcVideoInfo;
 import com.petzmall.training.module.player.utils.ScreenUtils;
@@ -121,7 +122,8 @@ public class VideoPlayActivity extends BaseActivity {
     private AliyunScreenMode currentScreenMode = AliyunScreenMode.Small;
     List<AliyunDownloadMediaInfo> aliyunDownloadMediaInfoList;
     private static final String DEFAULT_VID = "bc971152b60b4c0a8edeb3c993582f76";
-    private boolean  starting; //是否暂停
+    private boolean starting; //是否播放中
+
     /**
      * get StsToken stats
      */
@@ -190,7 +192,9 @@ public class VideoPlayActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+//        nest.setNestedScrollingEnabled(false);
         initAppBar();
+
         requestVidSts();
         initAliyunPlayerView();
         commentSecondAdapter = new CommentSecondAdapter(mContext, 0);
@@ -219,7 +223,7 @@ public class VideoPlayActivity extends BaseActivity {
 //        }
 //        inRequest = true;
         PlayParameter.PLAY_PARAM_VID = DEFAULT_VID;
-        VidStsUtil.getVidSts(PlayParameter.PLAY_PARAM_VID, new VideoPlayActivity.MyStsListener(this));
+        VidStsUtil.getVidSts(PlayParameter.PLAY_PARAM_VID, new MyStsListener(this));
     }
 
     private void initAliyunPlayerView() {
@@ -246,7 +250,6 @@ public class VideoPlayActivity extends BaseActivity {
         mAliyunVodPlayerView.setOnSeekCompleteListener(new MySeekCompleteListener(this));
         mAliyunVodPlayerView.setOnSeekStartListener(new MySeekStartListener(this));
         mAliyunVodPlayerView.enableNativeLog();
-
 
 
     }
@@ -324,13 +327,23 @@ public class VideoPlayActivity extends BaseActivity {
     private void onPlayStateSwitch(IAliyunVodPlayer.PlayerState playerState) {
         if (playerState == IAliyunVodPlayer.PlayerState.Started) {
 //            tvLogs.append(format.format(new Date()) + " 暂停 \n");
-            appBarParams.setScrollFlags(i0 | i1 | i2);//重置折叠效果
+
+
+            if ((popupWindow != null && popupWindow.isShowing())&&currentScreenMode == AliyunScreenMode.Full) {   //如果是大屏幕，不能滑动
+                appBarParams.setScrollFlags(0);//这个加了之后不可滑动
+            }else if((popupWindow != null && popupWindow.isShowing())&&currentScreenMode == AliyunScreenMode.Small){
+                appBarParams.setScrollFlags(0);//这个加了之后不可滑动
+
+            }else{
+                appBarParams.setScrollFlags(i0 | i1 | i2);//重置折叠效果
+            }
             appBarChildAt.setLayoutParams(appBarParams);
             starting = false;//暂停
             Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.log_play_pause,
                     Toast.LENGTH_SHORT).show();
 
         } else if (playerState == IAliyunVodPlayer.PlayerState.Paused) {
+
             appBarParams.setScrollFlags(0);//这个加了之后不可滑动
             appBarChildAt.setLayoutParams(appBarParams);
             starting = true;//播放
@@ -567,7 +580,7 @@ public class VideoPlayActivity extends BaseActivity {
 //        }
         appBarParams.setScrollFlags(0);//这个加了之后不可滑动
         appBarChildAt.setLayoutParams(appBarParams);
-//        nestedScrollview.setNestedScrollingEnabled(false);
+        starting = true;
         Toast.makeText(VideoPlayActivity.this.getApplicationContext(), R.string.toast_prepare_success,
                 Toast.LENGTH_SHORT).show();
     }
@@ -694,7 +707,6 @@ public class VideoPlayActivity extends BaseActivity {
 //                downloadManager.prepareDownloadMedia(vidSts);
 //            }
         }
-
 
 
         // 视频列表数据为0时, 加载列表
@@ -869,6 +881,7 @@ public class VideoPlayActivity extends BaseActivity {
         if (mAliyunVodPlayerView != null) {
             int orientation = getResources().getConfiguration().orientation;
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                currentScreenMode = AliyunScreenMode.Small;
                 //转为竖屏了。
                 //显示状态栏
                 //                if (!isStrangePhone()) {
@@ -883,6 +896,19 @@ public class VideoPlayActivity extends BaseActivity {
                         .getLayoutParams();
                 aliVcVideoViewLayoutParams.height = (int) (ScreenUtils.getWidth(this) * 9.0f / 16);
                 aliVcVideoViewLayoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                if ((popupWindow != null && popupWindow.isShowing())) {
+                    appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
+                    appBarChildAt.setLayoutParams(appBarParams);
+                } else {
+                    if(starting) {
+                        appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
+                        appBarChildAt.setLayoutParams(appBarParams);
+                     }else {
+                        appBarParams.setScrollFlags(i0 | i1 | i2);//否则可以滑动
+                        appBarChildAt.setLayoutParams(appBarParams);
+                    }
+                }
+
                 //                if (!isStrangePhone()) {
                 //                    aliVcVideoViewLayoutParams.topMargin = getSupportActionBar().getHeight();
                 //                }
@@ -890,6 +916,7 @@ public class VideoPlayActivity extends BaseActivity {
             } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 //转到横屏了。
                 //隐藏状态栏
+                currentScreenMode = AliyunScreenMode.Full;
                 if (!Utils.isStrangePhone()) {
                     this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                             WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -1102,10 +1129,10 @@ public class VideoPlayActivity extends BaseActivity {
         cancelPop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(starting){
+                if (starting) {
                     appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
                     appBarChildAt.setLayoutParams(appBarParams);
-                }else{
+                } else {
                     appBarParams.setScrollFlags(i0 | i1 | i2);//否则可以滑动
                     appBarChildAt.setLayoutParams(appBarParams);
                 }
@@ -1189,10 +1216,10 @@ public class VideoPlayActivity extends BaseActivity {
     public void onBackPressed() {
         if (popupWindow != null && popupWindow.isShowing()) {
             popupWindow.dismiss();
-            if(starting){
+            if (starting) {
                 appBarParams.setScrollFlags(0);//如果在播放中禁止滑动
                 appBarChildAt.setLayoutParams(appBarParams);
-            }else{
+            } else {
                 appBarParams.setScrollFlags(i0 | i1 | i2);//否则可以滑动
                 appBarChildAt.setLayoutParams(appBarParams);
             }

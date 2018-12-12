@@ -35,7 +35,6 @@
                     android:id="@+id/video_view"
                     android:layout_width="match_parent"
                     android:layout_height="203dp"
-
                     />
 
                 <android.support.v7.widget.Toolbar
@@ -114,8 +113,8 @@
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+             />
 
         <com.github.customview.MyLinearLayout
             android:id="@+id/comment_linear"

@@ -13,7 +13,6 @@ import com.aspsine.multithreaddownload.DownloadManager;
 import com.baidu.mapapi.SDKInitializer;
 //import com.github.retrofitutil.NetWorkManager;
 import com.bumptech.glide.request.target.ViewTarget;
-import com.petzmall.training.db.SQLHelper;
 import com.petzmall.training.view.CustomViewWithTypefaceSupport;
 import com.petzmall.training.view.TextField;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -38,7 +37,6 @@ import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 public class MyApplication extends MultiDexApplication {
 
     private  static MyApplication myApplication;
-    private SQLHelper sqlHelper;
     private static Context mContext;
 
     @Override
@@ -109,8 +107,7 @@ public class MyApplication extends MultiDexApplication {
     }
     @Override
     public void onTerminate() {
-        if (sqlHelper != null)
-            sqlHelper.close();
+
         super.onTerminate();
         //整体摧毁的时候调用这个方法
     }

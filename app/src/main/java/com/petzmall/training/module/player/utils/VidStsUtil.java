@@ -49,7 +49,7 @@ public class VidStsUtil {
                     VcPlayerLog.e(TAG, "accessKeyId = " + accessKeyId + " , accessKeySecret = " + accessKeySecret +
                             " , securityToken = " + securityToken);
                     AliyunVidSts vidSts = new AliyunVidSts();
-                    vidSts.setVid("9bef43e36c2f42ec9d7b34ec80ead12a");
+                    vidSts.setVid("cac02774c65b4cf08085a052d92c806d");
                     vidSts.setAcId(accessKeyId);
                     vidSts.setSecurityToken(securityToken);
                     vidSts.setAkSceret(accessKeySecret);

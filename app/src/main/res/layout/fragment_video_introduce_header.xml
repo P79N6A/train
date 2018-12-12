@@ -78,9 +78,11 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
         android:textSize="14sp"
-        android:text="123"
+        android:text="123gggggg"
+        android:textStyle="bold"
+        fontPath="fonts/SourceHanSansCN-Normal.ttf"
         android:layout_below="@+id/ly_my_top"
-        />
+        tools:ignore="MissingPrefix" />
 
     <com.github.customview.FlowLayout
         android:id="@+id/fl_label"
