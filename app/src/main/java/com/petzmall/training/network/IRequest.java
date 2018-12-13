@@ -46,7 +46,7 @@ public interface IRequest {
     Call<ResponseObj<AddGoodsObj>> getSpinnerData(@QueryMap Map<String,String> map);
 
     //登陆
-    @POST("console/outer/login")
+    @POST("console/outer/loginToken")
     Call<ResponseObj<LoginObj>> userLogin(@QueryMap Map<String,String> map);
 
     //修改密码

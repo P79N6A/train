@@ -12,24 +12,24 @@ public class ResponseObj<T> {
      * Response : {"avatar":"http://yinya.hai-tao.net","mobile":"15601772922","nick_name":"156***2922","sex":"保密","user_name":"15601772922","user_id":"1117"}
      */
 
-    private int ErrCode;
-    private String ErrMsg;
+    private int code;
+    private String msg;
     private T data;
 
-    public int getErrCode() {
-        return ErrCode;
+    public int getCode() {
+        return code;
     }
 
-    public void setErrCode(int ErrCode) {
-        this.ErrCode = ErrCode;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getErrMsg() {
-        return ErrMsg;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setErrMsg(String ErrMsg) {
-        this.ErrMsg = ErrMsg;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public T getData() {
@@ -41,7 +41,7 @@ public class ResponseObj<T> {
     }
 
     public boolean isSuccess(){
-        if(getErrCode()==0){
+        if(getCode()==0){
             return true;
         }
         return false;

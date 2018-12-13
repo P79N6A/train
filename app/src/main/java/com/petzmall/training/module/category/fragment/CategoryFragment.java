@@ -25,6 +25,7 @@ import com.petzmall.training.module.category.adapter.MenuAdapter;
 import com.petzmall.training.module.category.bean.CategoryBean;
 import com.petzmall.training.module.category.bean.CategoryObj;
 import com.petzmall.training.module.category.network.ApiRequest;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 
 import java.io.BufferedReader;
 import java.util.ArrayList;
@@ -150,6 +151,8 @@ public class CategoryFragment extends BaseFragment  {
 
 
             }
+
+
         });
     }
 

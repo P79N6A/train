@@ -20,6 +20,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseFragment;
 import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.socialCircle.adapter.RecyclerviewVideoAdapter;
 import com.petzmall.training.module.socialCircle.bean.Video;
 import com.petzmall.training.module.socialCircle.network.ApiRequest;
@@ -174,6 +175,8 @@ public class VideoIntroduceFragment extends BaseFragment {
 //
 //                }
             }
+
+
 
         });
     }

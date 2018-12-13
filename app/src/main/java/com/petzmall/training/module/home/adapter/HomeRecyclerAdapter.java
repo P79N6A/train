@@ -23,6 +23,7 @@ import com.petzmall.training.listener.OnItemPictureClickListener;
 import com.petzmall.training.module.home.bean.RefreshObj;
 import com.petzmall.training.module.home.event.RefreshEvent;
 import com.petzmall.training.module.home.network.ApiRequest;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.socialCircle.adapter.MyRecyclerAdapter;
 import com.petzmall.training.tools.GlideLoader;
 import com.petzmall.training.view.DividerGridItemDecoration;
@@ -134,6 +135,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         holder.tvTitle.setText(obj.getNameX());
                         RxBus.getInstance().post(new RefreshEvent(position));
                     }
+
+
                 });
             }
         });
@@ -177,6 +180,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         holder.tvTitle.setText(obj.getNameX());
                         RxBus.getInstance().post(new RefreshEvent(position));
                     }
+
+
                 });
             }
         });
@@ -202,6 +207,8 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                         holder.tvTitle.setText(obj.getNameX());
                         RxBus.getInstance().post(new RefreshEvent(position));
                     }
+
+
                 });
             }
         });

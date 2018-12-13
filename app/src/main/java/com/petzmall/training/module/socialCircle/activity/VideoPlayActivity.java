@@ -38,6 +38,7 @@ import com.petzmall.training.PopupWindow.CommonPopupWindow;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.player.constants.PlayParameter;
 import com.petzmall.training.module.player.playlist.AlivcVideoInfo;
 import com.petzmall.training.module.player.utils.ScreenUtils;
@@ -915,6 +916,8 @@ public class VideoPlayActivity extends BaseActivity {
 
             } else if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 //转到横屏了。
+                //隐藏输入框
+                commentLinear.setVisibility(View.GONE);
                 //隐藏状态栏
                 currentScreenMode = AliyunScreenMode.Full;
                 if (!Utils.isStrangePhone()) {
@@ -1191,6 +1194,7 @@ public class VideoPlayActivity extends BaseActivity {
                     }
                 }
             }
+
         });
     }
 

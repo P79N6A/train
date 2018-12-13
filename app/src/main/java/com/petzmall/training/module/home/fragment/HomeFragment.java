@@ -17,6 +17,7 @@ import com.petzmall.training.module.home.bean.HomeObj;
 import com.petzmall.training.module.home.bean.RefreshObj;
 import com.petzmall.training.module.home.event.RefreshEvent;
 import com.petzmall.training.module.home.network.ApiRequest;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
 import com.petzmall.training.view.ProgressLayout;
 import com.petzmall.training.view.UniversalItemDecoration;
@@ -133,6 +134,8 @@ public class HomeFragment extends BaseFragment {
 //                    adapter.updateList((ArrayList<RefreshObj>) obj.getHome(), true);
                 }
             }
+
+
         });
     }
 

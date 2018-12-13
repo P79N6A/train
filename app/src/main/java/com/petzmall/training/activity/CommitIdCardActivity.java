@@ -29,6 +29,7 @@ import com.petzmall.training.GetSign;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.network.ApiRequest;
 import com.petzmall.training.network.response.GradObj;
 import com.petzmall.training.network.response.UploadImageObj;
@@ -120,6 +121,8 @@ public class CommitIdCardActivity extends BaseActivity {
                          finish();
                      }
                     }
+
+
                 });
                 break;
         }
@@ -289,6 +292,8 @@ public class CommitIdCardActivity extends BaseActivity {
                             }
                         }
                     }
+
+
                 });
             }
 

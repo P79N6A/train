@@ -3,9 +3,12 @@ package com.petzmall.training.base;
 import android.content.Context;
 import android.view.View;
 
+import com.blankj.utilcode.util.ActivityUtils;
 import com.github.androidtools.ToastUtils;
 import com.github.baseclass.view.Loading;
 import com.github.retrofitutil.NoNetworkException;
+import com.petzmall.training.module.my.activity.LoginActivity;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.view.ProgressLayout;
 
 import java.net.ConnectException;
@@ -14,6 +17,8 @@ import in.srain.cube.views.ptr.PtrFrameLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.github.baseclass.utils.ActUtils.STActivity;
 
 /**
  * Created by Administrator on 2017/5/18.
@@ -62,6 +67,11 @@ public abstract class MyCallBack<T> implements Callback<ResponseObj<T>> {
         }
         if(e instanceof ServerException ||e instanceof NoNetworkException){
             ToastUtils.showToast(context,e.getMessage());
+            if(((ServerException) e).errorCode==1){
+                ActivityUtils.finishAllActivities();//清除所有activity
+                ActivityUtils.startActivity(LoginActivity.class);//跳转到登陆
+            }
+
         }else{
             ToastUtils.showToast(context,"连接失败");
             e.printStackTrace();
@@ -78,6 +88,9 @@ public abstract class MyCallBack<T> implements Callback<ResponseObj<T>> {
         }
         Loading.dismissLoading();
     }
+
+//    protected abstract void STActivity(Class<LoginPhoneActivity> loginPhoneActivityClass);
+
     public void onCompelte(){
         if(!noHiddenLoad){
             Loading.dismissLoading();
@@ -110,9 +123,14 @@ public abstract class MyCallBack<T> implements Callback<ResponseObj<T>> {
             }
             return;
         }
-        int errCode = response.body().getErrCode();
+        int errCode = response.body().getCode();
+        if(errCode == 1){
+            onError(new ServerException(errCode,response.body().getMsg()));
+            return ;
+        }
+
         if(errCode!=0){
-            onError(new ServerException(errCode,response.body().getErrMsg()));
+            onError(new ServerException(errCode,response.body().getMsg()));
             return;
         }
         T res = response.body().getData();
@@ -121,14 +139,14 @@ public abstract class MyCallBack<T> implements Callback<ResponseObj<T>> {
             Class baseClass=BaseObj.class;
             boolean assignableFrom = baseClass.isAssignableFrom(aClass);
             if (assignableFrom) {
-                ((BaseObj)res).setMsg(response.body().getErrMsg());
+                ((BaseObj)res).setMsg(response.body().getMsg());
                 onSuccess(res);
             }else{
                 onSuccess(res);
             }
         }else{
             T result= (T) new BaseObj();
-            ((BaseObj)result).setMsg(response.body().getErrMsg());
+            ((BaseObj)result).setMsg(response.body().getMsg());
             onSuccess(result);
 //            onError(new ServerException("暂无数据"));
         }

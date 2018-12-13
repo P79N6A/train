@@ -7,18 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.zhouwei.library.CustomPopWindow;
 import com.github.androidtools.PhoneUtils;
 import com.google.gson.Gson;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseFragment;
 import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.socialCircle.adapter.CommentAdapter;
 import com.petzmall.training.module.socialCircle.adapter.CommentExpandAdapter;
 import com.petzmall.training.module.socialCircle.adapter.MyAdapter;
 import com.petzmall.training.module.socialCircle.bean.CommentBean;
 import com.petzmall.training.module.socialCircle.bean.CommentDetailBean;
 import com.petzmall.training.module.socialCircle.bean.CommentsBean;
+import com.petzmall.training.module.socialCircle.bean.SecondCommentBean;
 import com.petzmall.training.module.socialCircle.network.ApiRequest;
 import com.petzmall.training.view.DividerGridItemDecoration;
 import com.petzmall.training.view.UniversalItemDecoration;
@@ -45,7 +48,7 @@ public class CommentsFragment extends BaseFragment {
     private BottomSheetDialog dialog;
     private LinearLayoutManager layoutManager;
     CommentAdapter commentAdapter;
-
+    boolean addHeader = false;//是否添加了头部
 
     @Override
     protected int getContentView() {
@@ -127,6 +130,7 @@ public class CommentsFragment extends BaseFragment {
 //                        data.clear();
 //                        data.addAll(obj.getHome());
 //                        adapter.notifyDataSetChanged();
+//                        addHeader(dataBean);
                         commentAdapter.setList(obj.getData(),true);
                         refreshLayout.finishRefresh();
                         refreshLayout.setNoMoreData(false);
@@ -142,8 +146,28 @@ public class CommentsFragment extends BaseFragment {
                     }
                 }
             }
+
         });
     }
+
+
+//    public void addHeader(SecondCommentBean.DataBean dataBean) {
+//        if (!addHeader) {
+//            //添加轮播图
+//            View view = LayoutInflater.from( ).inflate(R.layout.comment_second_title_layout, (ViewGroup) findViewById(android.R.id.content), false);
+//            circleImageView = view.findViewById(R.id.comment_item_logo);
+//            commentUserName = view.findViewById(R.id.comment_item_userName);
+//            commentTime = view.findViewById(R.id.comment_item_time);
+//            commentContent = view.findViewById(R.id.comment_item_content);
+//            commentUserName.setText(dataBean.getFromUname());
+//            commentTime.setText(dataBean.getReplyTime());
+//            commentContent.setText(dataBean.getContent());
+//            Glide.with(mContext).load(dataBean.getFromUimg())
+//                    .into(circleImageView);
+//            recyclerView.addHeaderView(view);
+//        }
+//        addHeader = true;
+//    }
 
 
     /**

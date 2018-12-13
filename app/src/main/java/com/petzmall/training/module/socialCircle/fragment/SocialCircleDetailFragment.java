@@ -23,6 +23,7 @@ import com.petzmall.training.base.MyCallBack;
 import com.petzmall.training.module.home.adapter.HomeRecyclerAdapter;
 import com.petzmall.training.module.home.bean.HomeObj;
 import com.petzmall.training.module.home.bean.RefreshObj;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.petzmall.training.module.socialCircle.adapter.MyRecyclerAdapter;
 import com.petzmall.training.module.socialCircle.network.ApiRequest;
 import com.petzmall.training.view.UniversalItemDecoration;
@@ -207,6 +208,7 @@ public class SocialCircleDetailFragment extends BaseFragment {
                     }
                 }
             }
+
         });
     }
 

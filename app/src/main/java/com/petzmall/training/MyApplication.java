@@ -12,6 +12,7 @@ import com.aspsine.multithreaddownload.DownloadConfiguration;
 import com.aspsine.multithreaddownload.DownloadManager;
 import com.baidu.mapapi.SDKInitializer;
 //import com.github.retrofitutil.NetWorkManager;
+import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.petzmall.training.view.CustomViewWithTypefaceSupport;
 import com.petzmall.training.view.TextField;
@@ -47,8 +48,10 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+
         myApplication = this;
         mContext = getApplicationContext();
+        Utils.init(myApplication);
         ViewTarget.setTagId(R.id.glide_tag);//gilde bug
         Typeface mTypeface = Typeface.createFromAsset(getAssets(), "fonts/SourceHanSansCN-Normal.ttf");
         try {
@@ -64,9 +67,9 @@ public class MyApplication extends MultiDexApplication {
         //配置数据库
 //        setupDatabase();
 //        if(true&&BuildConfig.DEBUG){                           //http://192.168.0.19:20001/        //http://121.40.186.118:5108
-//         //   NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5108",BuildConfig.DEBUG).complete();
-
-             NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",true).complete();
+         //   NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5108",BuildConfig.DEBUG).complete();
+        NetWorkManager.getInstance(getApplicationContext(),"http://192.168.1.38:8080/",BuildConfig.DEBUG).complete();
+//             NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",true).complete();
 //        }else{
 //          //  NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5008",BuildConfig.DEBUG).complete();
 //            NetWorkManager.getInstance(getApplicationContext(),"http://1v8z769925.51mypc.cn:8081/outer/",false).complete();

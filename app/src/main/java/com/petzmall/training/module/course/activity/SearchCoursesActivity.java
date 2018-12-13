@@ -31,6 +31,7 @@ import com.petzmall.training.module.course.adapter.HistoryAdapter;
 import com.petzmall.training.module.course.bean.SearchRecordObj;
 import com.petzmall.training.module.course.network.ApiRequest;
 import com.petzmall.training.module.my.activity.LoginActivity;
+import com.petzmall.training.module.my.activity.LoginPhoneActivity;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -294,6 +295,7 @@ public class SearchCoursesActivity extends BaseActivity {
                     }
                 }
             }
+
         });
 
     }

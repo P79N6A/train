@@ -27,15 +27,16 @@ public class AddCookiesInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         final Request.Builder builder = chain.request().newBuilder();
-        SharedPreferences sharedPreferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
 //最近在学习RxJava,这里用了RxJava的相关API大家可以忽略,用自己逻辑实现即可
-        Observable.just(sharedPreferences.getString("session", ""))
+        Observable.just(sharedPreferences.getString("cookie", ""))
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String cookie) {
                         //添加cookie
-                        builder.addHeader("Cookie", "JSESSIONID=CC663060DD46E01C3D95B3FDF05E9B1B");
-                        Logger.i("add_xiang111  " + SPUtils.getPrefString(context,"session",""));
+                        builder.addHeader("Cookie", cookie);
+//                        builder.addHeader("Cookie", "JSESSIONID=CC663060DD46E01C3D95B3FDF05E9B1B");
+                        Logger.i("add_xiang111  " + SPUtils.getPrefString(context,"cookie",""));
                     }
                 });
         return chain.proceed(builder.build());

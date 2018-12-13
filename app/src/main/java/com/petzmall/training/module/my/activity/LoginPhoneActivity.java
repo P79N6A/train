@@ -7,8 +7,12 @@ import android.widget.TextView;
 
 import com.github.rxjava.rxbus.RxUtils;
 import com.petzmall.training.GetSign;
+import com.petzmall.training.MainActivity;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
+import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.network.ApiRequest;
+import com.petzmall.training.network.response.LoginObj;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -83,13 +87,14 @@ public class LoginPhoneActivity extends BaseActivity {
                 String phone = getSStr(et_register_phone);
                 String code = getSStr(et_register_code);
 
-//                if (TextUtils.isEmpty(getSStr(et_register_phone))) {
-//                    showMsg("手机号不能为空");
-//                    return;
-//                } else if (!GetSign.isMobile(getSStr(et_register_phone))) {
-//                    showMsg("请输入正确手机号");
-//                    return;
-//                } else if (TextUtils.isEmpty(smsCode) || TextUtils.isEmpty(code) || !code.equals(smsCode)) {
+                if (TextUtils.isEmpty(getSStr(et_register_phone))) {
+                    showMsg("手机号不能为空");
+                    return;
+                } else if (!GetSign.isMobile(getSStr(et_register_phone))) {
+                    showMsg("请输入正确手机号");
+                    return;
+                }
+//                else if (TextUtils.isEmpty(code) || TextUtils.isEmpty(code) || !code.equals(code)) {
 //                    showMsg("请输入正确验证码");
 //                    return;
 //                }
@@ -101,18 +106,20 @@ public class LoginPhoneActivity extends BaseActivity {
 
     private void loginPhone(String phone,String vcode) {
         showLoading();
-        STActivity(SubmitInformationActivity.class);
-//        Map<String,String> map = new HashMap<String,String>();
-//        map.put("loginPwd","w123456");
-//        map.put("phone","12345678901");
-//        ApiRequest.userLogin(map, new MyCallBack<LoginObj>(mContext) {
-//            @Override
-//            public void onSuccess(LoginObj obj) {
-//                showMsg("登陆成功");
-////                finish();
-//                STActivity(MainActivity.class);
-//            }
-//        });
+//        STActivity(SubmitInformationActivity.class);
+        Map<String,String> map = new HashMap<String,String>();
+        map.put("loginPwd",vcode);
+        map.put("phone",phone);
+        ApiRequest.userLogin(map, new MyCallBack<LoginObj>(mContext) {
+            @Override
+            public void onSuccess(LoginObj obj) {
+                showMsg("登陆成功");
+//                finish();
+                STActivity((Class) MainActivity.class);
+            }
+
+
+        });
     }
 
     private void getMsgCode() {

@@ -21,7 +21,7 @@ public interface IRequest {
 
     //首页
 //    @POST("console/outer/page/home")
-    @GET("home")
+    @POST("/console/outer/page/home")
     Call<ResponseObj<HomeObj>> getHomeData();
 
 
