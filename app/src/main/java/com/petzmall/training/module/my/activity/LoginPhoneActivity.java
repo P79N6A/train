@@ -115,10 +115,9 @@ public class LoginPhoneActivity extends BaseActivity {
             public void onSuccess(LoginObj obj) {
                 showMsg("登陆成功");
 //                finish();
-                STActivity((Class) MainActivity.class);
+//                STActivity((Class) MainActivity.class);
+                STActivity(SubmitInformationActivity.class);
             }
-
-
         });
     }
 

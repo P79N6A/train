@@ -28,9 +28,9 @@
     <color name="praise_item_default">#333333</color>
     <color name="praise_item_selector_default">#cccccc</color>
     <color name="submit_background">#F0F3FA</color>
-
-
-
+    <color name="progress_start">#31DBDB</color>
+    <color name="progress_end">#FEDB18</color>
+    <color name="progress_default">#F9FFFF</color>
 
     <color name="circle_bottom_color">#4D4D4D</color>
     <color name="transparent_bg">#80000000</color>

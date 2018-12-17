@@ -17,8 +17,6 @@ import com.petzmall.training.module.home.bean.HomeObj;
 import com.petzmall.training.module.home.bean.RefreshObj;
 import com.petzmall.training.module.home.event.RefreshEvent;
 import com.petzmall.training.module.home.network.ApiRequest;
-import com.petzmall.training.module.my.activity.LoginPhoneActivity;
-import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
 import com.petzmall.training.view.ProgressLayout;
 import com.petzmall.training.view.UniversalItemDecoration;
 import com.petzmall.training.view.WrapContentLinearLayoutManager;
@@ -162,7 +160,7 @@ public class HomeFragment extends BaseFragment {
     protected void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.toolbar:
-                STActivity(AliyunPlayerSkinActivity.class);
+//                STActivity(AliyunPlayerSkinActivity.class);
                 break;
 
         }

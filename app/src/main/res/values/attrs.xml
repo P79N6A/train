@@ -47,5 +47,15 @@
         <attr name="item_selector_color" format="color"/>
     </declare-styleable>
 
+    <attr name="startColor" format="color" />
+    <attr name="endColor" format="color" />
+    <attr name="backgroundColor" format="color" />
+    <attr name="textColor" format="color" />
+    <declare-styleable name="GoodProgressView">
+        <attr name="startColor" />
+        <attr name="endColor" />
+        <attr name="backgroundColor" />
+        <attr name="textColor" />
+    </declare-styleable>
 
 </resources>

@@ -21,10 +21,13 @@ import com.petzmall.training.network.response.WithdrawalsObj;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.QueryMap;
 
 /**
@@ -128,8 +131,9 @@ public interface IRequest {
 
 
     //图片上传
-    @POST("api/App/PostUploadFileBase64")
-    Call<ResponseObj<BaseObj>> uploadImg(@QueryMap Map<String, String> map, @Body UploadImgItem item);
+    @Multipart
+    @POST("console/outer/image/uploadtest5")
+    Call<ResponseObj<BaseObj>> uploadImg(@Part List<MultipartBody.Part> partList);
 
     //实名认证
     @POST("api/Login/UploadCard")

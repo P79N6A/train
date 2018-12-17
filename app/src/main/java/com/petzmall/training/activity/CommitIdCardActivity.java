@@ -265,36 +265,36 @@ public class CommitIdCardActivity extends BaseActivity {
                 item.setFile(baseImg);
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("sign", GetSign.getSign(map));
-                ApiRequest.uploadImg(map, item, new MyCallBack<UploadImageObj>(mContext) {
-                    @Override
-                    public void onSuccess(UploadImageObj obj) {
-                        if(flag ==1){ //如果选择的是第一个上传
-                            ImagePath1 = obj.getImg();
-                            if(picOrCamera ==1){//同时不是选择拍照。则执行
-                                ivId1.setVisibility(View.VISIBLE);
-                                ivId1.setImageBitmap(bitmap);
-                                linearImage1.setVisibility(View.GONE);//隐藏界面
-                            }else{
-                                ivId1.setImageBitmap(BitmapFactory.decodeFile(imgSaveName));
-                                ivId1.setVisibility(View.VISIBLE);
-                                linearImage1.setVisibility(View.GONE);//隐藏界面
-                            }
-                        }else{
-                            ImagePath2 = obj.getImg();
-                            if(picOrCamera ==1){//同时不是选择拍照。则执行
-                                ivId2.setVisibility(View.VISIBLE);
-                                ivId2.setImageBitmap(bitmap);
-                                linearImage2.setVisibility(View.GONE);//隐藏界面
-                            }else{
-                                ivId2.setImageBitmap(BitmapFactory.decodeFile(imgSaveName));
-                                ivId2.setVisibility(View.VISIBLE);
-                                linearImage2.setVisibility(View.GONE);//隐藏界面
-                            }
-                        }
-                    }
-
-
-                });
+//                ApiRequest.uploadImg(map, item, new MyCallBack<UploadImageObj>(mContext) {
+//                    @Override
+//                    public void onSuccess(UploadImageObj obj) {
+//                        if(flag ==1){ //如果选择的是第一个上传
+//                            ImagePath1 = obj.getImg();
+//                            if(picOrCamera ==1){//同时不是选择拍照。则执行
+//                                ivId1.setVisibility(View.VISIBLE);
+//                                ivId1.setImageBitmap(bitmap);
+//                                linearImage1.setVisibility(View.GONE);//隐藏界面
+//                            }else{
+//                                ivId1.setImageBitmap(BitmapFactory.decodeFile(imgSaveName));
+//                                ivId1.setVisibility(View.VISIBLE);
+//                                linearImage1.setVisibility(View.GONE);//隐藏界面
+//                            }
+//                        }else{
+//                            ImagePath2 = obj.getImg();
+//                            if(picOrCamera ==1){//同时不是选择拍照。则执行
+//                                ivId2.setVisibility(View.VISIBLE);
+//                                ivId2.setImageBitmap(bitmap);
+//                                linearImage2.setVisibility(View.GONE);//隐藏界面
+//                            }else{
+//                                ivId2.setImageBitmap(BitmapFactory.decodeFile(imgSaveName));
+//                                ivId2.setVisibility(View.VISIBLE);
+//                                linearImage2.setVisibility(View.GONE);//隐藏界面
+//                            }
+//                        }
+//                    }
+//
+//
+//                });
             }
 
             @Override

@@ -9,12 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.github.androidtools.inter.MyOnClickListener;
 import com.github.baseclass.rx.IOCallBack;
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
+import com.petzmall.training.base.BaseObj;
+import com.petzmall.training.base.MyCallBack;
+import com.petzmall.training.network.ApiRequest;
+import com.petzmall.training.network.response.UploadImgItem;
+import com.petzmall.training.tools.BitmapUtils;
 
 import org.devio.takephoto.app.TakePhoto;
 import org.devio.takephoto.app.TakePhotoImpl;
@@ -30,9 +38,15 @@ import org.devio.takephoto.permission.PermissionManager;
 import org.devio.takephoto.permission.TakePhotoInvocationHandler;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import rx.Subscriber;
 
 public class SubmitInformationActivity extends BaseActivity implements TakePhoto.TakeResultListener, InvokeListener {
@@ -44,7 +58,10 @@ public class SubmitInformationActivity extends BaseActivity implements TakePhoto
     private static final String TAG = SubmitInformationActivity.class.getName();
     private TakePhoto takePhoto;
     private InvokeParam invokeParam;
+
     int size;
+    String ImgUrl;//图片
+    NiftyDialogBuilder dialogBuilder;
     @Override
     protected int getContentView() {
         return R.layout.act_submit_information_step1;
@@ -105,16 +122,43 @@ public class SubmitInformationActivity extends BaseActivity implements TakePhoto
 
     @Override
     protected void initData() {
-
+         dialogBuilder=NiftyDialogBuilder.getInstance(this);
     }
 
     @OnClick({R.id.tv_submit,R.id.iv_store})
     protected void onViewClick(View v) {
         switch (v.getId()) {
-            case R.id.tv_submit:
+            case R.id.tv_submit://提交
+                if(ImgUrl==null){
+                    showToastS("还没有选择门头照片");
+                    return;
+                }
+                File file = new File(ImgUrl);//filePath 图片地址
+                MultipartBody.Builder builder = new MultipartBody.Builder()
+                        .setType(MultipartBody.FORM);//表单类型;//ParamKey.TOKEN 自定义参数key常量类，即参数名
+                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                builder.addFormDataPart("file", file.getName(), imageBody);//imgfile 后台接收图片流的参数名
+                List<MultipartBody.Part> parts = builder.build().parts();
+                ApiRequest.uploadImg(parts, new MyCallBack<BaseObj>(mContext) {
+                    @Override
+                    public void onSuccess(BaseObj obj) {
+//                        if(selectImgIndex ==-1){
+//                            if(isEmpty(addImgAdapter.getList())){
+//                                List<String> list=new ArrayList<String>();
+//                                list.add(obj.getImg());
+//                                addImgAdapter.setList(list);
+//                            }else{
+//                                addImgAdapter.getList().add(obj.getImg());
+//                            }
+//                        }else{
+//                            addImgAdapter.getList().set(selectImgIndex,obj.getImg());
+//                        }
+//                        addImgAdapter.notifyDataSetChanged();
+                    }
+                });
                 STActivity(SubmitInformationNowActivity.class);
                 break;
-            case R.id.iv_store:
+            case R.id.iv_store://选图片
                 showSelectPhotoDialog();
                 break;
         }
@@ -158,6 +202,7 @@ public class SubmitInformationActivity extends BaseActivity implements TakePhoto
             @Override
             public void call(Subscriber<? super String> subscriber) {
                 try {
+
                     subscriber.onNext(result.getImages().get(0).getOriginalPath());
                     subscriber.onCompleted();
                 } catch (Exception e) {
@@ -167,30 +212,20 @@ public class SubmitInformationActivity extends BaseActivity implements TakePhoto
             }
             @Override
             public void onMyNext(String baseImg) {
+                ImgUrl = baseImg;
                 Glide.with(SubmitInformationActivity.this).load(new File(baseImg)).into(ivStore);
+
+//                String imgStr = BitmapUtils.bitmapToString2(new File(baseImg));
 //                UploadImgItem item=new UploadImgItem();
 //                item.setFile(baseImg);
 //                String rnd = getRnd();
-//                Map<String,String> map=new HashMap<String,String>();
-//                map.put("rnd",rnd);
-//                map.put("sign",GetSign.getSign(map));
-//                ApiRequest.uploadImg(map,item, new MyCallBack<BaseObj>(mContext) {
-//                    @Override
-//                    public void onSuccess(BaseObj obj) {
-//                        if(selectImgIndex ==-1){
-//                            if(isEmpty(addImgAdapter.getList())){
-//                                List<String> list=new ArrayList<String>();
-//                                list.add(obj.getImg());
-//                                addImgAdapter.setList(list);
-//                            }else{
-//                                addImgAdapter.getList().add(obj.getImg());
-//                            }
-//                        }else{
-//                            addImgAdapter.getList().set(selectImgIndex,obj.getImg());
-//                        }
-//                        addImgAdapter.notifyDataSetChanged();
-//                    }
-//                });
+
+//                File file = new File(baseImg);
+//                RequestBody imageBody = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+//                MultipartBody.Part imageBodyPart = MultipartBody.Part.createFormData("image", file.getName(), imageBody);
+
+
+
             }
             @Override
             public void onMyError(Throwable e) {
@@ -290,5 +325,38 @@ public class SubmitInformationActivity extends BaseActivity implements TakePhoto
         builder.setWithOwnCrop(false);
         return builder.create();
     }
+
+
+    @Override
+    public void onBackPressed() {
+        dialogBuilder
+                .withTitle("温馨提示")                                  //.withTitle(null)  no title
+                .withTitleColor("#FFFFFF")                                  //def
+                .withDividerColor("#5A96F0")                              //def
+                .withMessage("是否取消提交门头照片.")                     //.withMessage(null)  no Msg
+                .withMessageColor("#FFFFFF")                              //def  | withMessageColor(int resid)
+                .withDialogColor("#5A96F0")                               //def  | withDialogColor(int resid)
+                .withDuration(700)                                          //def
+                .withEffect(Effectstype.Fadein)                                         //def Effectstype.Slidetop
+                .withButton1Text("确定")                                      //def gone
+                .withButton2Text("取消")                                  //def gone
+                .isCancelableOnTouchOutside(true)                           //def    | isCancelable(true)
+                     //.setCustomView(View or ResId,context)
+                .setButton1Click(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .setButton2Click(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogBuilder.dismiss();
+                    }
+                })
+                .show();
+    }
+
+
 
 }

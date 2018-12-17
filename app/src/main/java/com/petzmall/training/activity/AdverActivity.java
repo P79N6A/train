@@ -1,6 +1,7 @@
 package com.petzmall.training.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
@@ -38,29 +39,29 @@ public class AdverActivity extends BaseActivity {
     private Timer timer;
     private TimerTask task;
     private boolean isPreFinish;
-    private  String userName;
+    private String  cookie;
     @Override
     protected int getContentView() {
         return R.layout.act_adver;
     }
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-////        imgPath = SPUtils.getPrefString(this, Config.imgPath, null);
-//
-//        //TextUtils.isEmpty(imgPath)
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        imgPath = SPUtils.getPrefString(this, Config.imgPath, null);
+
+        //TextUtils.isEmpty(imgPath)
 //        if(TextUtils.isEmpty(imgPath)){
 //            startActivity(new Intent(this,MainActivity.class));
 //            finish();
 //        }
-//        super.onCreate(savedInstanceState);
-//    }
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected void initView() {
-
+     String   cookie1 = SPUtils.getPrefString(this,"cookie","");
         imgPath = SPUtils.getPrefString(this, Config.imgPath, null);
-        userName =  SPUtils.getPrefString(this, Config.user_name, null);
+        cookie =  SPUtils.getPrefString(this, Config.cookie, null);
         if(!TextUtils.isEmpty(imgPath)){
             Glide.with(this).load(imgPath).into(iv_spalsh);
         }
@@ -90,7 +91,7 @@ public class AdverActivity extends BaseActivity {
                         public void run() {
                             Log.i("onCreate===","===444");
                             tv_spalsh.setText("跳过 "+timeCount);
-                            if(userName==null){
+                            if(cookie==null){
                                 startActivity(new Intent(AdverActivity.this,LoginActivity.class));
                             }else{
                             startActivity(new Intent(AdverActivity.this,MainActivity.class));
@@ -123,11 +124,11 @@ public class AdverActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.tv_spalsh:
                 isPreFinish=true;
-//                if(userName==null){
-//                    startActivity(new Intent(AdverActivity.this,LoginActivity.class));
-//                }else{
+                if(cookie==null){
+                    startActivity(new Intent(AdverActivity.this,LoginActivity.class));
+                }else{
                     startActivity(new Intent(AdverActivity.this,MainActivity.class));
-//                }
+                }
                 finish();
             break;
         }

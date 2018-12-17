@@ -8,7 +8,11 @@ import com.petzmall.training.base.MyCallBack;
 import com.petzmall.training.network.response.AddGoodsItem;
 import com.petzmall.training.network.response.UploadImgItem;
 
+import java.util.List;
 import java.util.Map;
+
+import okhttp3.MultipartBody;
+import retrofit2.http.Part;
 
 /**
  * Created by Administrator on 2017/6/28.
@@ -177,12 +181,12 @@ public class ApiRequest extends BaseApiRequest {
 
 
 
-    public static void uploadImg(Map map, UploadImgItem item, MyCallBack callBack) {
+    public static void uploadImg(@Part List<MultipartBody.Part> partList, MyCallBack callBack) {
         if (notNetWork(callBack.getContext())) {
             callBack.onFailure(null, new NoNetworkException(Config.noNetWork));
             return;
         }
-        getGeneralClient(IRequest.class).uploadImg(map, item).enqueue(callBack);
+        getCommonWithCacheClient(IRequest.class).uploadImg(partList).enqueue(callBack);
     }
 
     public static void UploadCard(Map map, MyCallBack callBack) {

@@ -46,10 +46,11 @@ public class ReceivedCookiesInterceptor implements Interceptor {
                         }
                     });
             Logger.i("rec_xiang111  " + cookieBuffer.toString());
-            SharedPreferences sharedPreferences = context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("cookie", cookieBuffer.toString());
-            editor.commit();
+//            SharedPreferences sharedPreferences = context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor editor = sharedPreferences.edit();
+//            editor.putString("cookie", cookieBuffer.toString());
+//            editor.commit();
+            SPUtils.setPrefString(context, Config.cookie,cookieBuffer.toString());
 
         }
 

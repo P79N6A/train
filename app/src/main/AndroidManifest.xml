@@ -107,10 +107,7 @@
 
         </activity>
         <activity android:name="com.petzmall.training.module.my.activity.LoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name="com.petzmall.training.activity.CommitIdCardActivity"/>
         <activity android:name="com.petzmall.training.module.home.activity.ChannelActivity"/>
@@ -139,20 +136,32 @@
         <activity android:name="com.petzmall.training.module.my.activity.LoginPhoneActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             />
+
+        <activity android:name="com.petzmall.training.module.my.activity.IntegralCenterActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+       </activity>
+
         <activity android:name="com.petzmall.training.module.my.activity.LoginWeChatActivity"/>
-        <activity android:name="com.petzmall.training.module.my.activity.SubmitInformationActivity"/>
+        <activity android:name="com.petzmall.training.module.my.activity.SubmitInformationActivity">
+
+        </activity>
         <activity android:name="com.petzmall.training.module.my.activity.SubmitInformationNowActivity"/>
         <activity android:name="com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             />
-
-
         <activity
             android:name="com.petzmall.training.module.player.activity.AliyunPlayerSettingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
         </activity>
+
+
         <activity
             android:name="com.foamtrace.photopicker.PhotoPickerActivity"
             android:theme="@style/PhotoPickerTheme"

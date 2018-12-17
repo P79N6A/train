@@ -14,16 +14,6 @@ import com.baidu.mapapi.SDKInitializer;
 //import com.github.retrofitutil.NetWorkManager;
 import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.request.target.ViewTarget;
-import com.petzmall.training.view.CustomViewWithTypefaceSupport;
-import com.petzmall.training.view.TextField;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
 
@@ -66,10 +56,10 @@ public class MyApplication extends MultiDexApplication {
 
         //配置数据库
 //        setupDatabase();
-//        if(true&&BuildConfig.DEBUG){                           //http://192.168.0.19:20001/        //http://121.40.186.118:5108
+//        if(true&&BuildConfig.DEBUG){                           //http://192.168.1.38:8080/        //http://121.40.186.118:5108
          //   NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5108",BuildConfig.DEBUG).complete();
-        NetWorkManager.getInstance(getApplicationContext(),"http://192.168.1.38:8080/",BuildConfig.DEBUG).complete();
-//             NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",true).complete();
+//        NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",BuildConfig.DEBUG).complete();
+             NetWorkManager.getInstance(getApplicationContext(),"http://192.168.1.38:8080/",true).complete();
 //        }else{
 //          //  NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5008",BuildConfig.DEBUG).complete();
 //            NetWorkManager.getInstance(getApplicationContext(),"http://1v8z769925.51mypc.cn:8081/outer/",false).complete();

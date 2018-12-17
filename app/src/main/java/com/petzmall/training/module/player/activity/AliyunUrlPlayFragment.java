@@ -72,7 +72,7 @@ public class AliyunUrlPlayFragment extends Fragment implements OnClickListener{
     public void startPlayerByUrl(){
         if (!TextUtils.isEmpty(etPlayUrl.getText().toString())){
             Intent intent = new Intent();
-            intent.setClass(this.getActivity(), AliyunPlayerSkinActivity.class);
+//            intent.setClass(this.getActivity(), AliyunPlayerSkinActivity.class);
 
             PlayParameter.PLAY_PARAM_TYPE = "localSource";
             PlayParameter.PLAY_PARAM_URL = etPlayUrl.getText().toString();

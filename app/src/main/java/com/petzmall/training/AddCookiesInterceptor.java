@@ -27,9 +27,8 @@ public class AddCookiesInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         final Request.Builder builder = chain.request().newBuilder();
-        SharedPreferences sharedPreferences = context.getSharedPreferences("cookie", Context.MODE_PRIVATE);
 //最近在学习RxJava,这里用了RxJava的相关API大家可以忽略,用自己逻辑实现即可
-        Observable.just(sharedPreferences.getString("cookie", ""))
+        Observable.just(SPUtils.getPrefString(context,"cookie",""))
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String cookie) {

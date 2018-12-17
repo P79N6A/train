@@ -66,7 +66,7 @@ wx23ef688729e8e8ba*/
     public static final String exitAPP ="exitAPP";//退出登录参数名
     public static final String imgPath ="imgPath";//广告图路径
     public static final String noNetWork ="无网络连接,请稍后再试";//退出登录参数名
-
+    public static final String cookie ="cookie";//广告图路径
 
     public static final String loginAppType_1 ="1";//飞首app
     public static final String loginAppType_2 ="2";//农户app

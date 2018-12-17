@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.petzmall.training.R;
 import com.aliyun.vodplayer.downloader.AliyunDownloadMediaInfo;
 import com.aliyun.vodplayer.media.IAliyunVodPlayer;
-import com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity;
 import com.petzmall.training.module.player.utils.DensityUtil;
 import com.petzmall.training.module.player.utils.ImageLoader;
 import com.petzmall.training.module.player.utils.WrapCheckGroup;
@@ -61,11 +60,7 @@ public class AddDownloadView extends LinearLayout {
         init();
     }
 
-    public AddDownloadView(AliyunPlayerSkinActivity context, AliyunScreenMode screenMode) {
-        super(context);
-        this.screenMode = screenMode;
-        init();
-    }
+
 
     private void init() {
         if (screenMode == AliyunScreenMode.Small) {
