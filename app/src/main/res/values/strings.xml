@@ -130,6 +130,7 @@
     <string name="user_phone">店主手机*</string>
     <string name="store_address">店面地址*</string>
     <string name="detail_address">详细地址*</string>
+    <string name="online_video_15">在线观看视频15分钟</string>
 
 
 </resources>

@@ -320,7 +320,6 @@
                     android:paddingRight="13dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    app:my_ll_bottom_line="true"
                     app:my_ll_solid="@color/white">
                     <com.petzmall.training.view.GoodProgressView
                         android:id="@+id/good_progress_view1"
@@ -344,16 +343,34 @@
                         android:layout_height="24dp"
                         android:layout_marginRight="10dp"
                         android:src="@drawable/service" />
-                    <com.github.customview.MyTextView
-                        fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
+                        android:orientation="vertical"
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                    <com.github.customview.MyTextView
+                        fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11sp"
                         android:textColor="#1B130F"
                         android:gravity="center_vertical"
-                        android:text="@string/my_line3"
+                        android:text="@string/online_video_15"
+                        android:layout_marginBottom="4dp"
+                        android:includeFontPadding="false"
                         />
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textColor="@color/my_text_color"
+                            android:gravity="center_vertical"
+                            android:text="完成2/3"
+                            android:includeFontPadding="false"
+                            />
+                    </LinearLayout>
                     <ImageView
                         android:padding="5dp"
                         android:layout_width="25dp"
@@ -364,29 +381,46 @@
                 <com.github.customview.MyLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     app:my_ll_bottom_line="true"
                     app:my_ll_solid="@color/white">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/address" />
-                    <com.github.customview.MyTextView
-                        fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                        android:src="@drawable/service" />
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
-                        android:textColor="#1B130F"
+                        android:orientation="vertical"
                         android:gravity="center_vertical"
-                        android:text="@string/my_line4"
-                        />
+                        android:layout_height="match_parent">
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textColor="#1B130F"
+                            android:gravity="center_vertical"
+                            android:text="@string/online_video_15"
+                            android:layout_marginBottom="4dp"
+                            android:includeFontPadding="false"
+                            />
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textColor="@color/my_text_color"
+                            android:gravity="center_vertical"
+                            android:text="完成2/3"
+                            android:includeFontPadding="false"
+                            />
+                    </LinearLayout>
                     <ImageView
                         android:padding="5dp"
                         android:layout_width="25dp"
@@ -397,29 +431,46 @@
                 <com.github.customview.MyLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     app:my_ll_bottom_line="true"
                     app:my_ll_solid="@color/white">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/friend" />
-                    <com.github.customview.MyTextView
-                        fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                        android:src="@drawable/service" />
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
-                        android:textColor="#1B130F"
+                        android:orientation="vertical"
                         android:gravity="center_vertical"
-                        android:text="@string/my_line5"
-                        />
+                        android:layout_height="match_parent">
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textColor="#1B130F"
+                            android:gravity="center_vertical"
+                            android:text="@string/online_video_15"
+                            android:layout_marginBottom="4dp"
+                            android:includeFontPadding="false"
+                            />
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textColor="@color/my_text_color"
+                            android:gravity="center_vertical"
+                            android:text="完成2/3"
+                            android:includeFontPadding="false"
+                            />
+                    </LinearLayout>
                     <ImageView
                         android:padding="5dp"
                         android:layout_width="25dp"
@@ -430,29 +481,46 @@
                 <com.github.customview.MyLinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="13dp"
+                    android:paddingLeft="13dp"
+                    android:paddingRight="13dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     app:my_ll_bottom_line="true"
                     app:my_ll_solid="@color/white">
 
                     <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="15dp"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/suggest" />
-                    <com.github.customview.MyTextView
-                        fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                        android:src="@drawable/service" />
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
-                        android:textColor="#1B130F"
+                        android:orientation="vertical"
                         android:gravity="center_vertical"
-                        android:text="@string/my_line6"
-                        />
+                        android:layout_height="match_parent">
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11sp"
+                            android:textColor="#1B130F"
+                            android:gravity="center_vertical"
+                            android:text="@string/online_video_15"
+                            android:layout_marginBottom="4dp"
+                            android:includeFontPadding="false"
+                            />
+                        <com.github.customview.MyTextView
+                            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8sp"
+                            android:textColor="@color/my_text_color"
+                            android:gravity="center_vertical"
+                            android:text="完成2/3"
+                            android:includeFontPadding="false"
+                            />
+                    </LinearLayout>
                     <ImageView
                         android:padding="5dp"
                         android:layout_width="25dp"
@@ -460,43 +528,33 @@
                         android:src="@drawable/arrow_right"
                         />
                 </com.github.customview.MyLinearLayout>
-                <com.github.customview.MyLinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="13dp"
-                    android:layout_marginRight="13dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:my_ll_bottom_line="true"
-                    app:my_ll_corner_bottomLeftRadius="12dp"
-                    app:my_ll_corner_bottomRightRadius="12dp"
-                    android:layout_marginBottom="10dp"
-                    app:my_ll_solid="@color/white">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="10dp"
-                        android:src="@drawable/setting" />
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="13dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_height="wrap_content">
                     <com.github.customview.MyTextView
                         fontPath="fonts/SourceHanSansCN-Medium.ttf"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="match_parent"
-                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
                         android:textColor="#1B130F"
+                        android:text="热门兑奖"
                         android:gravity="center_vertical"
-                        android:text="@string/my_line7"
                         />
-                    <ImageView
-                        android:padding="5dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/arrow_right"
-                        />
-                </com.github.customview.MyLinearLayout>
 
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview_exchange"
+                        android:layout_width="match_parent"
+                        android:layout_height="77dp"
+
+                        >
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 
