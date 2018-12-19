@@ -31,6 +31,7 @@
     <color name="progress_start">#31DBDB</color>
     <color name="progress_end">#FEDB18</color>
     <color name="progress_default">#F9FFFF</color>
+    <color name="progress_text_color">#08B5FF</color>
 
     <color name="circle_bottom_color">#4D4D4D</color>
     <color name="transparent_bg">#80000000</color>

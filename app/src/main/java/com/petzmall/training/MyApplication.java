@@ -58,8 +58,8 @@ public class MyApplication extends MultiDexApplication {
 //        setupDatabase();
 //        if(true&&BuildConfig.DEBUG){                           //http://192.168.1.38:8080/        //http://121.40.186.118:5108
          //   NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5108",BuildConfig.DEBUG).complete();
-//        NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",BuildConfig.DEBUG).complete();
-             NetWorkManager.getInstance(getApplicationContext(),"http://192.168.1.38:8080/",true).complete();
+        NetWorkManager.getInstance(getApplicationContext(),"http://www.wanandroid.com/tools/mockapi/12410/",BuildConfig.DEBUG).complete();
+//             NetWorkManager.getInstance(getApplicationContext(),"http://192.168.1.38:8080/",true).complete();
 //        }else{
 //          //  NetWorkManager.getInstance(getApplicationContext(),"http://121.40.186.118:5008",BuildConfig.DEBUG).complete();
 //            NetWorkManager.getInstance(getApplicationContext(),"http://1v8z769925.51mypc.cn:8081/outer/",false).complete();

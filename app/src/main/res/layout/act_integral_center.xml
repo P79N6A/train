@@ -56,8 +56,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_margin="9dp"
-                                android:src="@drawable/arrow_right"
                                 android:text="@string/verification_code"
+                                android:textSize="14sp"
+                                android:includeFontPadding="false"
+                                android:lineSpacingMultiplier="0.9"
+                                fontPath="fonts/SourceHanSansCN-Medium.ttf"
+                                tools:ignore="MissingPrefix"
                                 android:textColor="@color/white" />
 
                             <LinearLayout
@@ -102,7 +106,7 @@
                                     android:lineSpacingMultiplier="0.9"
                                     android:text="2156"
                                     android:textColor="@color/white"
-                                    android:textSize="15sp"
+                                    android:textSize="20sp"
                                     android:textStyle="bold"
                                     android:layout_weight="1"
                                     tools:ignore="MissingPrefix" />
@@ -114,9 +118,9 @@
                                     android:gravity="center_vertical"
                                     android:includeFontPadding="false"
                                     android:lineSpacingMultiplier="0.9"
-                                    android:text="以获取2枚勋章 >"
+                                    android:text="已获取2枚勋章 >"
                                     android:textColor="@color/white"
-                                    android:textSize="15sp"
+                                    android:textSize="10sp"
                                     android:layout_weight="1"
                                     tools:ignore="MissingPrefix" />
 
@@ -148,14 +152,14 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:layout_marginBottom="6dp"
-                                android:background="@drawable/money"/>
+                                android:background="@drawable/jifen_home"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="13sp"
+                                android:textSize="9sp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/my_text_color_black"
-                                android:text="12345"
+                                android:text="积分乐园"
                                 android:includeFontPadding="false"
                                 android:lineSpacingMultiplier="0.9"
                                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
@@ -183,14 +187,14 @@
                                 android:layout_width="36dp"
                                 android:layout_height="36dp"
                                 android:layout_marginBottom="6dp"
-                                android:background="@drawable/vouchers"/>
+                                android:background="@drawable/jifen_market"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="13sp"
+                                android:textSize="9sp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/my_text_color_black"
-                                android:text="12345"
+                                android:text="积分商城"
                                 android:includeFontPadding="false"
                                 android:lineSpacingMultiplier="0.9"
                                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
@@ -223,7 +227,7 @@
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:layout_marginBottom="6dp"
-                                    android:background="@drawable/record"/>
+                                    android:background="@drawable/jifen_task"/>
                                 <View
                                     android:visibility="visible"
                                     android:layout_width="6dp"
@@ -235,10 +239,10 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textSize="13sp"
+                                android:textSize="9sp"
                                 android:layout_gravity="center"
                                 android:textColor="@color/my_text_color_black"
-                                android:text="12345"
+                                android:text="积分任务"
                                 android:includeFontPadding="false"
                                 android:lineSpacingMultiplier="0.9"
                                 fontPath="fonts/SourceHanSansCN-Medium.ttf"
@@ -342,7 +346,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/service" />
+                        android:src="@drawable/jifen_time" />
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -373,9 +377,9 @@
                     </LinearLayout>
                     <ImageView
                         android:padding="5dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/arrow_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/go_complete"
                         />
                 </com.github.customview.MyLinearLayout>
                 <com.github.customview.MyLinearLayout
@@ -392,7 +396,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/service" />
+                        android:src="@drawable/jifen_review" />
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -423,9 +427,9 @@
                     </LinearLayout>
                     <ImageView
                         android:padding="5dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/arrow_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/go_complete"
                         />
                 </com.github.customview.MyLinearLayout>
                 <com.github.customview.MyLinearLayout
@@ -442,7 +446,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/service" />
+                        android:src="@drawable/jifen_score" />
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -473,9 +477,9 @@
                     </LinearLayout>
                     <ImageView
                         android:padding="5dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/arrow_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/go_complete"
                         />
                 </com.github.customview.MyLinearLayout>
                 <com.github.customview.MyLinearLayout
@@ -483,6 +487,7 @@
                     android:layout_height="50dp"
                     android:paddingLeft="13dp"
                     android:paddingRight="13dp"
+                    android:layout_marginBottom="5dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
                     app:my_ll_bottom_line="true"
@@ -492,7 +497,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_marginRight="10dp"
-                        android:src="@drawable/service" />
+                        android:src="@drawable/jifen_share" />
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -523,9 +528,9 @@
                     </LinearLayout>
                     <ImageView
                         android:padding="5dp"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:src="@drawable/arrow_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/go_complete"
                         />
                 </com.github.customview.MyLinearLayout>
                 <LinearLayout

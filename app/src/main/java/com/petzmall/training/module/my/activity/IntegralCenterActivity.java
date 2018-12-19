@@ -13,7 +13,6 @@ import com.petzmall.training.R;
 import com.petzmall.training.base.BaseActivity;
 import com.petzmall.training.base.MyCallBack;
 import com.petzmall.training.module.my.adapter.LuckDrawAdapter;
-import com.petzmall.training.module.my.adapter.MainAdapter;
 import com.petzmall.training.module.my.bean.Lucky;
 import com.petzmall.training.module.my.network.ApiRequest;
 import com.petzmall.training.view.GoodProgressView;
@@ -50,8 +49,17 @@ public class IntegralCenterActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initImmersionBar() {
+        super.initImmersionBar();
+        mImmersionBar.statusBarColor(R.color.white)
+                .fitsSystemWindows(true)
+                .statusBarDarkFont(true, 0.2f)
+                .init();
+    }
 
+    @Override
+    protected void initView() {
+        setAppTitle("积分中心");
         //设置布局管理器
 
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
@@ -60,18 +68,18 @@ public class IntegralCenterActivity extends BaseActivity {
         mRecyclerView.setAdapter(mAdapter);
         timer.schedule(task, 1000, 1000);
 
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerviewExchange.setLayoutManager(linearLayoutManager);
-        ArrayList<String> strings = new ArrayList<>();
-        strings.add("http://img.d2c.cn/2018/04/13/055719886e0e44e7e6bf3f95eb80dc888e71ce.jpg");
-        strings.add("http://img.d2c.cn/2018/04/04/090731adf471f7cede663d446082a721606777.jpg");
-        strings.add("http://img.d2c.cn/2017/09/23/044820323632cb6f87d05242dc6a79a1206faa.jpg");
-        strings.add("http://img.d2c.cn/2018/03/21/0832286789d5df26025be2544401ac72b9daef.png");
-        strings.add("http://img.d2c.cn/2018/03/21/08312989dbb198ca64d3b3bd7e01ebe580e647.png");
-//        strings.add("http://img.d2c.cn/2018/03/19/1101364f13d1f42fada5588a8cd0109f589710.jpg");
-        MainAdapter mainAdapter = new MainAdapter(this,strings);
-        recyclerviewExchange.setAdapter(mainAdapter);
+//
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+//        recyclerviewExchange.setLayoutManager(linearLayoutManager);
+//        ArrayList<String> strings = new ArrayList<>();
+//        strings.add("http://img.d2c.cn/2018/04/13/055719886e0e44e7e6bf3f95eb80dc888e71ce.jpg");
+//        strings.add("http://img.d2c.cn/2018/04/04/090731adf471f7cede663d446082a721606777.jpg");
+//        strings.add("http://img.d2c.cn/2017/09/23/044820323632cb6f87d05242dc6a79a1206faa.jpg");
+//        strings.add("http://img.d2c.cn/2018/03/21/0832286789d5df26025be2544401ac72b9daef.png");
+//        strings.add("http://img.d2c.cn/2018/03/21/08312989dbb198ca64d3b3bd7e01ebe580e647.png");
+////        strings.add("http://img.d2c.cn/2018/03/19/1101364f13d1f42fada5588a8cd0109f589710.jpg");
+//        MainAdapter mainAdapter = new MainAdapter(this,strings);
+//        recyclerviewExchange.setAdapter(mainAdapter);
     }
 
     @Override
@@ -107,7 +115,6 @@ public class IntegralCenterActivity extends BaseActivity {
                 goodProgressView1.setProgressValue(progressValue * 1);
                 goodProgressView1.postInvalidate();
 
-
                 progressValue += 1;
                 if (progressValue > 10) {
                     timer.cancel();
@@ -125,10 +132,5 @@ public class IntegralCenterActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

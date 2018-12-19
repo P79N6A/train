@@ -20,7 +20,7 @@ public class GoodProgressView extends View
 {
 	private int[] mColors = { getResources().getColor(R.color.progress_start), getResources().getColor(R.color.progress_end)};//进度条颜色（渐变色的2个点）
 	private int backgroundColor = getResources().getColor(R.color.progress_default);//进度条默认颜色
-	private int textColor = Color.GRAY;//文本颜色
+	private int textColor =getResources().getColor(R.color.progress_text_color);//文本颜色
 
 	private Paint mPaint;//画笔
 	private int progressValue=0;//进度值
@@ -42,32 +42,32 @@ public class GoodProgressView extends View
 		super(context, attrs, defStyle);
 
 		// 获得我们所定义的自定义样式属性
-		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GoodProgressView, defStyle, 0);
-		int n = a.getIndexCount();
-		for (int i = 0; i < n; i++)
-		{
-			int attr = a.getIndex(i);
-			switch (attr)
-			{
-				case R.styleable.GoodProgressView_startColor:
-					// 渐变色之起始颜色，默认设置为红色
-					mColors[0] = a.getColor(attr, Color.RED);
-					break;
-				case R.styleable.GoodProgressView_endColor:
-					// 渐变色之结束颜色，默认设置为品红
-					mColors[1] = a.getColor(attr, Color.MAGENTA);
-					break;
-				case R.styleable.GoodProgressView_backgroundColor:
-					// 进度条默认颜色，默认设置为灰色
-					backgroundColor = a.getColor(attr, Color.GRAY);
-					break;
-				case R.styleable.GoodProgressView_textColor:
-					// 文字颜色，默认设置为灰色
-					textColor = a.getColor(attr, Color.GRAY);
-					break;
-			}
-		}
-		a.recycle();
+//		TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.GoodProgressView, defStyle, 0);
+//		int n = a.getIndexCount();
+////		for (int i = 0; i < n; i++)
+////		{
+////			int attr = a.getIndex(i);
+////			switch (attr)
+////			{
+////				case R.styleable.GoodProgressView_startColor:
+////					// 渐变色之起始颜色，默认设置为红色
+////					mColors[0] = a.getColor(attr, Color.RED);
+////					break;
+////				case R.styleable.GoodProgressView_endColor:
+////					// 渐变色之结束颜色，默认设置为品红
+////					mColors[1] = a.getColor(attr, Color.MAGENTA);
+////					break;
+////				case R.styleable.GoodProgressView_backgroundColor:
+////					// 进度条默认颜色，默认设置为灰色
+////					backgroundColor = a.getColor(attr, Color.GRAY);
+////					break;
+////				case R.styleable.GoodProgressView_textColor:
+////					// 文字颜色，默认设置为灰色
+////					textColor = a.getColor(attr, Color.GRAY);
+////					break;
+////			}
+////		}
+//		a.recycle();
 
 		mPaint = new Paint();
 		progressValue=0;
@@ -172,7 +172,7 @@ public class GoodProgressView extends View
 		canvas.drawLine(offsetWidth+section * progressWidth, offsetHeight, offsetWidth+progressWidth, offsetHeight, mPaint);
 
 		//设置渐变色区域
-		LinearGradient shader = new LinearGradient(0, 0, offsetWidth*2+progressWidth , 0, colors, null,
+		LinearGradient shader = new LinearGradient(0, 0, progressWidth , 0, colors, null,
 				Shader.TileMode.CLAMP);
 		mPaint.setShader(shader);
 
@@ -202,15 +202,15 @@ public class GoodProgressView extends View
 //		canvas.drawCircle(offsetWidth+section * progressWidth, offsetHeight, innerCircleDiameter/2, mPaint);//白色内圆
 
 
-		//绘制文字--百分比
-		mPaint.setStrokeWidth(2*unit);
-		mPaint.setColor(textColor);
-		mPaint.setTextSize(wordHeight);
-		//计算坐标使文字居中
-		FontMetrics fontMetrics = mPaint.getFontMetrics();
-		float  fontHeight = fontMetrics.bottom - fontMetrics.top;
-		float baseY =  height/2 + fontHeight/2 - fontMetrics.bottom;
-		canvas.drawText(""+progressValue+"/10", progressWidth+2*offsetWidth, baseY, mPaint);//略微偏下，baseline
+//		//绘制文字--百分比
+//		mPaint.setStrokeWidth(2*unit);
+//		mPaint.setColor(Color.parseColor("#08B5FF"));
+//		mPaint.setTextSize(100);
+//		//计算坐标使文字居中
+//		FontMetrics fontMetrics = mPaint.getFontMetrics();
+//		float  fontHeight = fontMetrics.bottom - fontMetrics.top;
+//		float baseY =  height/2 + fontHeight/2 - fontMetrics.bottom;
+//		canvas.drawText(""+progressValue+"/10", progressWidth+2*offsetWidth, baseY, mPaint);//略微偏下，baseline
 
 	}
 
