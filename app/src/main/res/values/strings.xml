@@ -131,6 +131,8 @@
     <string name="store_address">店面地址*</string>
     <string name="detail_address">详细地址*</string>
     <string name="online_video_15">在线观看视频15分钟</string>
-
+    <string name="video_review">视频评论</string>
+    <string name="video_score">视频评分</string>
+    <string name="video_share">分享视频</string>
 
 </resources>
