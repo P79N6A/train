@@ -209,7 +209,7 @@
                             android:layout_marginTop="13dp"
                             />
                         <LinearLayout
-                            android:id="@+id/lll_right"
+                            android:id="@+id/ll_jifen_task"
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"

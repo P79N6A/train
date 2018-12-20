@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#00000000"
+    android:id="@+id/linear">
+
+<android.support.v7.widget.CardView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    app:cardCornerRadius="10dp"
+    android:layout_marginBottom="11dp">
+    <com.github.customview.MyLinearLayout
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="6dp"
+            android:textSize="14sp"
+            android:text="今日已签到成功"
+            android:textColor="@color/black"
+            android:lineSpacingMultiplier="0.9"
+            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+            android:includeFontPadding="false"
+            tools:ignore="MissingPrefix" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:text="明日签到可领14积分"
+            android:textColor="@color/black"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="20dp"
+            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+            tools:ignore="MissingPrefix" />
+     <android.support.v7.widget.RecyclerView
+         android:id="@+id/dialog_recyclerview"
+         android:layout_marginLeft="35dp"
+         android:layout_marginRight="35dp"
+         android:layout_marginBottom="29dp"
+         android:layout_gravity="center_horizontal"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content">
+     </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:text="明日签到可领14积分"
+            android:textColor="@color/my_text_color"
+            android:includeFontPadding="false"
+            android:lineSpacingMultiplier="0.9"
+            android:layout_marginBottom="37dp"
+            fontPath="fonts/SourceHanSansCN-Regular.ttf"
+            tools:ignore="MissingPrefix" />
+    </com.github.customview.MyLinearLayout>
+</android.support.v7.widget.CardView>
+
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/close"/>
+</LinearLayout>

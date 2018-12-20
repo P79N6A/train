@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+        <com.github.customview.MyFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content">
+         <com.github.customview.MyImageView
+            android:id="@+id/iv_lucky_draw"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:scaleType="fitXY"
+             android:background="@drawable/dialog_circle"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="+5"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                fontPath="fonts/SourceHanSansCN-Regular.ttf"
+                tools:ignore="MissingPrefix"
+                />
+        </com.github.customview.MyFrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:text="第二天"
+        android:layout_gravity="center"
+        android:textColor="@color/gray_66"
+        fontPath="fonts/SourceHanSansCN-Regular.ttf"
+        tools:ignore="MissingPrefix"
+        />
+
+</LinearLayout>
+

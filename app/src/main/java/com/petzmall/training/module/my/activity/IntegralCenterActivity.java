@@ -16,6 +16,7 @@ import com.petzmall.training.module.my.adapter.LuckDrawAdapter;
 import com.petzmall.training.module.my.bean.Lucky;
 import com.petzmall.training.module.my.network.ApiRequest;
 import com.petzmall.training.view.GoodProgressView;
+import com.petzmall.training.view.MyAdvertisementView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +27,7 @@ import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class IntegralCenterActivity extends BaseActivity {
 
@@ -42,7 +44,7 @@ public class IntegralCenterActivity extends BaseActivity {
     Timer timer = new Timer();
     @BindView(R.id.recyclerview_exchange)
     RecyclerView recyclerviewExchange;
-
+    ArrayList<String> strings = new ArrayList<>();
     @Override
     protected int getContentView() {
         return R.layout.act_integral_center;
@@ -72,12 +74,12 @@ public class IntegralCenterActivity extends BaseActivity {
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 //        recyclerviewExchange.setLayoutManager(linearLayoutManager);
 //        ArrayList<String> strings = new ArrayList<>();
-//        strings.add("http://img.d2c.cn/2018/04/13/055719886e0e44e7e6bf3f95eb80dc888e71ce.jpg");
-//        strings.add("http://img.d2c.cn/2018/04/04/090731adf471f7cede663d446082a721606777.jpg");
-//        strings.add("http://img.d2c.cn/2017/09/23/044820323632cb6f87d05242dc6a79a1206faa.jpg");
-//        strings.add("http://img.d2c.cn/2018/03/21/0832286789d5df26025be2544401ac72b9daef.png");
-//        strings.add("http://img.d2c.cn/2018/03/21/08312989dbb198ca64d3b3bd7e01ebe580e647.png");
-////        strings.add("http://img.d2c.cn/2018/03/19/1101364f13d1f42fada5588a8cd0109f589710.jpg");
+        strings.add("+1");
+        strings.add("+2");
+        strings.add("+3");
+        strings.add("+4");
+        strings.add("+5");
+//        strings.add("http://img.d2c.cn/2018/03/19/1101364f13d1f42fada5588a8cd0109f589710.jpg");
 //        MainAdapter mainAdapter = new MainAdapter(this,strings);
 //        recyclerviewExchange.setAdapter(mainAdapter);
     }
@@ -126,11 +128,16 @@ public class IntegralCenterActivity extends BaseActivity {
         ;
     };
 
-    @Override
+    @OnClick({ R.id.ll_jifen_task})
     protected void onViewClick(View v) {
-
+        switch (v.getId()) {
+            case R.id.ll_jifen_task:
+                MyAdvertisementView myAdvertisementView = new MyAdvertisementView(this,R.style.dialog,strings);
+                myAdvertisementView.setCancelable(false);
+                myAdvertisementView.showDialog();
+                break;
+        }
     }
-
 
 
 }
