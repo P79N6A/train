@@ -2,13 +2,18 @@ package com.petzmall.training.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.petzmall.training.R;
 import com.petzmall.training.module.my.adapter.DialogAdapter;
@@ -54,6 +59,17 @@ public class MyAdvertisementView extends Dialog implements View.OnClickListener 
         mAdapter = new DialogAdapter(context, 0);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setList(strings, true);
+
+       TextView text =  findViewById(R.id.dialog_title);//dialog title
+        String str1 = "今日已签到成功";
+        String str2 = "!";
+
+        SpannableStringBuilder builder = new SpannableStringBuilder(str1 + str2);
+        builder.setSpan(new ForegroundColorSpan(Color.parseColor("#F62E5E")),
+                str1.length(), (str1 + str2).length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+
+
+        text.setText(builder);
         findViewById(R.id.iv_close).setOnClickListener(this);
     }
 
