@@ -5,19 +5,19 @@
     android:clipChildren="false"
     android:id="@+id/rl_vp_container"
     android:orientation="vertical">
-    <com.petzmall.training.module.my.adapter.StarView
+    <com.petzm.training.module.my.adapter.StarView
         android:layout_toLeftOf="@+id/viewpager"
         android:id="@+id/view_left"
         android:layout_width="111dp"
         android:layout_height="127dp"
         />
-    <com.petzmall.training.module.my.adapter.StarView
+    <com.petzm.training.module.my.adapter.StarView
         android:layout_toRightOf="@+id/viewpager"
         android:id="@+id/view_right"
         android:layout_width="111dp"
         android:layout_height="127dp"
         />
-    <com.petzmall.training.module.my.adapter.CustomViewPager
+    <com.petzm.training.module.my.adapter.CustomViewPager
         android:layout_centerHorizontal="true"
         android:layout_width="124dp"
         android:layout_height="141dp"

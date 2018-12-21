@@ -22,11 +22,11 @@
         android:layout_width="match_parent"
         android:background="@color/c_divider"
         />
-    <com.petzmall.training.view.MyViewPager
+    <com.petzm.training.view.MyViewPager
         android:id="@+id/vp_my_order"
         android:layout_width="match_parent"
         android:background="@color/wheel_bg"
         android:layout_height="match_parent">
 
-    </com.petzmall.training.view.MyViewPager>
+    </com.petzm.training.view.MyViewPager>
 </LinearLayout>

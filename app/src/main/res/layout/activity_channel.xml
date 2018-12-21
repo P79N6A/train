@@ -42,7 +42,7 @@
 
 
 
-            <com.petzmall.training.view.DragGrid
+            <com.petzm.training.view.DragGrid
                 android:id="@+id/userGridView"
                 android:layout_marginTop="14dip"
                 android:layout_width="fill_parent"
@@ -80,7 +80,7 @@
                     android:textSize="11.0sp" />
             </LinearLayout>
 
-            <com.petzmall.training.view.OtherGridView
+            <com.petzm.training.view.OtherGridView
                 android:id="@+id/otherGridView"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

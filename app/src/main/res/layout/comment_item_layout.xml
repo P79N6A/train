@@ -143,7 +143,7 @@
         android:layout_marginRight="13dp"
         android:orientation="vertical"
         android:background="#F6F6F6">
-        <com.petzmall.training.view.CommentListView
+        <com.petzm.training.view.CommentListView
             android:id="@+id/commentList"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

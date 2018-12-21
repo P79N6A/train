@@ -10,7 +10,7 @@
 
     <include layout="@layout/app_title"/>
 
-    <com.petzmall.training.view.ProgressLayout
+    <com.petzm.training.view.ProgressLayout
         android:id="@id/pl_load"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -102,5 +102,5 @@
             app:my_tv_press="@color/red"
             app:my_tv_solid="@color/red"
             />
-    </com.petzmall.training.view.ProgressLayout>
+    </com.petzm.training.view.ProgressLayout>
 </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.petzmall.training">
+    package="com.petzm.training">
 
     <!--&lt;!&ndash; 这个权限用于进行网络定位&ndash;&gt;-->
     <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>-->
@@ -49,7 +49,7 @@
         android:supportsRtl="true"
         android:resizeableActivity="true"
         tools:replace="android:theme"
-        android:name="com.petzmall.training.MyApplication"
+        android:name="com.petzm.training.MyApplication"
         android:theme="@style/BaseAppTheme">
        >
 
@@ -99,45 +99,45 @@
             <!--&gt;-->
         <!--</activity>-->
 
-        <activity android:name="com.petzmall.training.activity.AdverActivity" >
+        <activity android:name="com.petzm.training.activity.AdverActivity" >
 
         </activity>
-        <activity android:name="com.petzmall.training.MainActivity"
+        <activity android:name="com.petzm.training.MainActivity"
             >
 
         </activity>
-        <activity android:name="com.petzmall.training.module.my.activity.LoginActivity" >
+        <activity android:name="com.petzm.training.module.my.activity.LoginActivity" >
 
         </activity>
-        <activity android:name="com.petzmall.training.activity.CommitIdCardActivity"/>
-        <activity android:name="com.petzmall.training.module.home.activity.ChannelActivity"/>
+        <activity android:name="com.petzm.training.activity.CommitIdCardActivity"/>
+        <activity android:name="com.petzm.training.module.home.activity.ChannelActivity"/>
         //分类
 
-        <activity android:name="com.petzmall.training.module.category.activity.CategoryListActivity"/>
+        <activity android:name="com.petzm.training.module.category.activity.CategoryListActivity"/>
         //搜索
-        <activity android:name="com.petzmall.training.module.course.activity.SearchCoursesActivity"/>
+        <activity android:name="com.petzm.training.module.course.activity.SearchCoursesActivity"/>
 
-        <activity android:name="com.petzmall.training.module.course.activity.GoodsPraiseActivity"/>
+        <activity android:name="com.petzm.training.module.course.activity.GoodsPraiseActivity"/>
 
         //图片查看
-        <activity android:name="com.petzmall.training.module.socialCircle.activity.ImagePreviewActivity" />
+        <activity android:name="com.petzm.training.module.socialCircle.activity.ImagePreviewActivity" />
 
         //video
-        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoActivity" />
+        <activity android:name="com.petzm.training.module.socialCircle.activity.VideoActivity" />
 
 
-        <activity android:name="com.petzmall.training.module.socialCircle.activity.VideoPlayActivity"
+        <activity android:name="com.petzm.training.module.socialCircle.activity.VideoPlayActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             >
 
         </activity>
 
-        <activity android:name="com.petzmall.training.module.my.activity.LoginPhoneActivity"
+        <activity android:name="com.petzm.training.module.my.activity.LoginPhoneActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             />
 
-        <activity android:name="com.petzmall.training.module.my.activity.IntegralCenterActivity"
+        <activity android:name="com.petzm.training.module.my.activity.IntegralCenterActivity"
             android:windowSoftInputMode="stateVisible|adjustResize"
             >
             <intent-filter>
@@ -146,17 +146,17 @@
             </intent-filter>
        </activity>
 
-        <activity android:name="com.petzmall.training.module.my.activity.LoginWeChatActivity"/>
-        <activity android:name="com.petzmall.training.module.my.activity.SubmitInformationActivity">
+        <activity android:name="com.petzm.training.module.my.activity.LoginWeChatActivity"/>
+        <activity android:name="com.petzm.training.module.my.activity.SubmitInformationActivity">
 
         </activity>
-        <activity android:name="com.petzmall.training.module.my.activity.SubmitInformationNowActivity"/>
-        <activity android:name="com.petzmall.training.module.player.activity.AliyunPlayerSkinActivity"
+        <activity android:name="com.petzm.training.module.my.activity.SubmitInformationNowActivity"/>
+        <activity android:name="com.petzm.training.module.player.activity.AliyunPlayerSkinActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             />
         <activity
-            android:name="com.petzmall.training.module.player.activity.AliyunPlayerSettingActivity"
+            android:name="com.petzm.training.module.player.activity.AliyunPlayerSettingActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
         </activity>
@@ -196,7 +196,7 @@
         </activity>
 
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.petzm.training.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />

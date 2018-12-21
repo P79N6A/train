@@ -28,7 +28,7 @@
         android:orientation="vertical"
         android:gravity="center_vertical"
         >
-        <com.petzmall.training.view.ProgressLayout
+        <com.petzm.training.view.ProgressLayout
             android:id="@id/pl_load"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -47,7 +47,7 @@
                 >
             </android.support.v7.widget.RecyclerView>
         </in.srain.cube.views.ptr.PtrClassicFrameLayout>
-        </com.petzmall.training.view.ProgressLayout>
+        </com.petzm.training.view.ProgressLayout>
             <com.github.customview.MyLinearLayout
                 android:id="@+id/linear_bottom"
                 android:layout_width="match_parent"

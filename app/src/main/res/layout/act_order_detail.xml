@@ -10,7 +10,7 @@
 
     <include layout="@layout/app_title"/>
 
-    <com.petzmall.training.view.ProgressLayout
+    <com.petzm.training.view.ProgressLayout
         android:id="@id/pl_load"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -28,5 +28,5 @@
 
             </android.support.v7.widget.RecyclerView>
         </in.srain.cube.views.ptr.PtrClassicFrameLayout>
-    </com.petzmall.training.view.ProgressLayout>
+    </com.petzm.training.view.ProgressLayout>
 </LinearLayout>

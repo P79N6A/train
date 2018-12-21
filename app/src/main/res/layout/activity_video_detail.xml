@@ -31,7 +31,7 @@
                 >
 
 
-                <com.petzmall.training.module.player.widget.AliyunVodPlayerView
+                <com.petzm.training.module.player.widget.AliyunVodPlayerView
                     android:id="@+id/video_view"
                     android:layout_width="match_parent"
                     android:layout_height="203dp"

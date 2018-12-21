@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:layout_height="match_parent">
-    <com.petzmall.training.view.ProgressLayout
+    <com.petzm.training.view.ProgressLayout
         android:id="@id/pl_load"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -126,5 +126,5 @@
                     />
             </com.github.customview.MyLinearLayout>
         </LinearLayout>
-    </com.petzmall.training.view.ProgressLayout>
+    </com.petzm.training.view.ProgressLayout>
 </LinearLayout>
